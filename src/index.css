@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 @tailwind utilities;
+
 
 /* getting error here */
 @import "tw-animate-css";
@@ -20,6 +22,12 @@
     @apply rounded-xl border border-[0.8px]  border-[#DAD8D8];
   }
 }
+
+
+
+
+
+
 
 @theme {
   --color-blue-900: #014162;
@@ -163,6 +171,8 @@
   --primary-color: #014162;
   --primary-color-light: rgb(1, 65, 98, 0.9);
   --black: #141212;
+  --silver: #BCB8B1;
+  --gray: #6B6F75;
 }
 
 * {

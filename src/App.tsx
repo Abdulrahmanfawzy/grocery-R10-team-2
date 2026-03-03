@@ -1,5 +1,14 @@
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import Shipping from "./pages/checkout/Shipping";
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+      <Shipping />
+    </BrowserRouter>
+  );
 };
 
 export default App;
