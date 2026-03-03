@@ -3,26 +3,33 @@
 
 /* getting error here */
 @import "tw-animate-css";
+
 @layer components {
+
+  .container {
+    @apply mx-auto px-4;
+  }
+
   .progess {
-    background: linear-gradient(
-      90deg,
-      #f7fcff 0%,
-      #9ab5c3 37.98%,
-      #47768f 71.63%,
-      #014162 100%
-    );
+    background: linear-gradient(90deg,
+        #f7fcff 0%,
+        #9ab5c3 37.98%,
+        #47768f 71.63%,
+        #014162 100%);
   }
+
   .box-blue {
-    @apply rounded-xl border border-[0.8px]  bg-[#014162] text-[#F7FCFF];
+    @apply rounded-xl border border-[0.8px] bg-[#014162] text-[#F7FCFF];
   }
+
   .box-light {
-    @apply rounded-xl border border-[0.8px]  border-[#DAD8D8];
+    @apply rounded-xl border border-[0.8px] border-[#DAD8D8];
   }
 }
 
 @theme {
-  --color-blue-900: #014162;
+  --color-blue: #08ABFF;
+  --color-overlay: #08415FC7;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -142,6 +149,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -169,6 +177,7 @@
   box-sizing: border-box;
   list-style: none;
 }
+
 body {
   font-family: "Inter", sans-serif;
   background-color: #fff;
