@@ -13,7 +13,7 @@ import { SuccessPopUp } from "@/components/common/Auth/SuccessPopUp";
 import { useState } from "react";
 
 export const ResendPassword = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative py-4 px-2">
       <Link to={"/PasswordRecovery"}>
