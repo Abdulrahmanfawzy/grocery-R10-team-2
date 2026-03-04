@@ -6,6 +6,7 @@ import ButtonPrimary from "@/components/common/ButtonPrimary";
 import { useNavigate } from "react-router-dom";
 import CheckoutLayout from "@/components/layout/CheckoutLayout";
 import PaymentMethod from "@/components/checkout/payment/PaymentMethod";
+import AmountSection from "@/components/checkout/payment/AmountSection";
 
 function Payment() {
   const navigate = useNavigate();
@@ -21,13 +22,20 @@ function Payment() {
           <PaymentMethod />
 
           {/* Order Summary */}
-          <div className="max-w-sm">
+          <div className="max-w-4xl">
             <h2 className="text-base font-semibold text-gray-800 mb-4 p-1">
               Order Summary
             </h2>
-            <div className="border border-gray-200 rounded-xl mb-12">
-              <OrderItemsScroll />
+            <div className="flex items-start gap-12 mb-12">
+              <div className="flex-[2] border border-gray-200 rounded-xl">
+                <OrderItemsScroll />
+              </div>
+              <div className="flex-1">
+                <AmountSection />
+              </div>
             </div>
+          </div>
+          <div className="max-w-sm">
             <ButtonPrimary
               btn={"Confirm Payment & Go To Checkout "}
               btnWidth={"w-full"}
