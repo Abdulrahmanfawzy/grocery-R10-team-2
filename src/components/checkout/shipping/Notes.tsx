@@ -17,7 +17,7 @@ function Notes() {
           <Input type="text" placeholder="Don’t Ring Bell" className="py-2" />
           <Input
             type="text"
-            placeholder="Call 30 min in Advance"
+            placeholder="Call 30 minutes in advance"
             className="py-2"
           />
         </div>

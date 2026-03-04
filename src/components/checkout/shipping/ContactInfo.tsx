@@ -10,7 +10,7 @@ function ContactInfo() {
       </h2>
 
       <div className="space-y-4 border border-gray-200 rounded-xl p-6">
-        <div className="grid grid-cols-2 gap-25">
+        <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <Label htmlFor="firstName">First Name</Label>
             <Input id="firstName" placeholder="Sarah" />
@@ -31,7 +31,7 @@ function ContactInfo() {
           <Input id="email" type="email" placeholder="Sarahem@gmail.com" />
         </div>
         <div className="flex gap-2 items-center mt-2">
-          <CircleCheck strokeWidth={1.5} className="text-(--gray)" />
+          <CircleCheck strokeWidth={1} className="text-(--gray)" />
           <p className="text-sm font-light text-(--gray)">
             Create an account for easier check-out next time
           </p>

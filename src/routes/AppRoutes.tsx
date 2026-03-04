@@ -7,6 +7,7 @@ function AppRoutes() {
   return (
     <div>
       <Routes>
+        <Route path="/" element={<Shipping />}></Route>
         <Route path="/checkout/" element={<Shipping />}></Route>
         <Route path="/checkout/shipping" element={<Shipping />}></Route>
         <Route path="/checkout/payment" element={<Payment />}></Route>

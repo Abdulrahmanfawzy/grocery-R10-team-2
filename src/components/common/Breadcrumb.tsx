@@ -1,19 +1,43 @@
 import { Link } from "react-router-dom";
+import { useCheckout } from "@/hooks/useCheckout";
 
-interface Props {
-  currentPage: string;
-}
+const breadcrumbLinks = {
+  shipping: {
+    links: [
+      { label: "Home", to: "/" },
+      { label: "Fresh Products", to: "/products" },
+      { label: "Cart", to: "/cart" },
+    ],
+    current: "Checkout (Shipping)",
+  },
+  payment: {
+    links: [
+      { label: "Home", to: "/" },
+      { label: "Fresh Products", to: "/products" },
+      { label: "Cart", to: "/cart" },
+      { label: "Shipping", to: "/checkout/shipping" },
+    ],
+    current: "Checkout (Payment)",
+  },
+  confirmation: {
+    links: [
+      { label: "Home", to: "/" },
+      { label: "Fresh Products", to: "/products" },
+      { label: "Cart", to: "/cart" },
+      { label: "Shipping", to: "/checkout/shipping" },
+      { label: "Shipping", to: "/checkout/payment" },
+    ],
+    current: "Confirmation",
+  },
+};
 
-const fixedLinks = [
-  { label: "Home", to: "/" },
-  { label: "Fresh Products", to: "/products" },
-  { label: "Cart", to: "/cart" },
-];
+function CheckoutBreadcrumb() {
+  const {currentStep} = useCheckout();
+  const {links, current} = breadcrumbLinks[currentStep];
 
-function CheckoutBreadcrumb({ currentPage }: Props) {
   return (
     <nav className="text-md text-gray-400 mb-4">
-      {fixedLinks.map((link) => {
+      {links.map((link) => {
         return (
           <span key={link.label}>
             <Link to={link.to} className="hover:text-gray-600">
@@ -23,7 +47,7 @@ function CheckoutBreadcrumb({ currentPage }: Props) {
           </span>
         );
       })}
-      <span className="text-gray-700 font-medium">{currentPage}</span>
+      <span className="text-gray-700 font-medium">{current}</span>
     </nav>
   );
 }
