@@ -5,7 +5,7 @@ import CheckoutContext from "@/lib/context/checkout.context";
 import ButtonPrimary from "@/components/common/ButtonPrimary";
 import { useNavigate } from "react-router-dom";
 import CheckoutLayout from "@/components/layout/CheckoutLayout";
-
+import PaymentMethod from "@/components/checkout/payment/PaymentMethod";
 
 function Payment() {
   const navigate = useNavigate();
@@ -17,6 +17,10 @@ function Payment() {
           <CheckoutBreadcrumb />
           <CheckoutStepper />
 
+          {/* Payment Method */}
+          <PaymentMethod />
+
+          {/* Order Summary */}
           <div className="max-w-sm">
             <h2 className="text-base font-semibold text-gray-800 mb-4 p-1">
               Order Summary
