@@ -3,6 +3,6 @@ import Home from "@/pages/home/Home";
 import { createBrowserRouter } from "react-router-dom";
 export const route = createBrowserRouter([
     {path: "/", element: <Mainlayout/> ,children: [
-        {path: "/home", element: <Home/>}
+        {index: true, element: <Home/>}
     ]},
 ])
