@@ -8,6 +8,7 @@ import VerificationCode from "@/pages/VerificationCode";
 import { createBrowserRouter } from "react-router-dom";
 
 export const route = createBrowserRouter([
+<<<<<<< HEAD
   {
     path: "Register",
     element: <Register />,
@@ -33,3 +34,13 @@ export const route = createBrowserRouter([
     element: <PasswordRecoveryWithPhone />,
   },
 ]);
+=======
+    {
+        path: "/", element: <Mainlayout />, children: [
+            { index: true, element: <Home/> },
+            { path: "/products", element: <ProductList /> },
+            { path: "/cart", element: <Cart/> }
+        ]
+    },
+])
+>>>>>>> 88bbadb441e7931b3f9cae3af1fc835eaf0e13af
