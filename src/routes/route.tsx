@@ -9,13 +9,6 @@ import { createBrowserRouter } from "react-router-dom";
 
 export const route = createBrowserRouter([
   {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      { index: true, element: <Home /> },
-    ],
-  },
-  {
     path: "Register",
     element: <Register />,
   },
@@ -40,4 +33,3 @@ export const route = createBrowserRouter([
     element: <PasswordRecoveryWithPhone />,
   },
 ]);
-
