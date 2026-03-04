@@ -8,7 +8,7 @@ export const route = createBrowserRouter([
     {
         path: "/", element: <Mainlayout />, children: [
             { path: "/home", element: <Home /> },
-            { path: "/products", element: <ProductList /> },
+            { path: "/products", element: <ProductList /> }
             { path: "/cart", element: <Cart/> }
         ]
     },
