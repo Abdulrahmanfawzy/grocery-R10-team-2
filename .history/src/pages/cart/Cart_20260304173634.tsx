@@ -1,17 +1,10 @@
 import CartItem from "../../components/common/shared/CartItem";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import ProductCard from "@/components/common/shared/ProductCard";
+
 export default function Cart() {
   return (
     <>
       <div className="bg-white p-6  w-full md:w-10/12 lg:w-9/12 mx-auto">
-        <h3 className="my-6 text-2xl">Products In Cart</h3>
+        <h3 className="my-6">Products In Cart</h3>
         <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 ">
           <div className="grid grid-cols-1 lg:grid-cols-2 divide-x">
 <CartItem></CartItem>
@@ -100,21 +93,7 @@ export default function Cart() {
           </div>
         </div>
 
-<Carousel className="w-full sm:max-w-xs md:max-w-xl mt-12 mx-auto">
-  <CarouselContent>
-    <CarouselItem>
-      <ProductCard></ProductCard>
-    </CarouselItem>
-    <CarouselItem>
-      <ProductCard></ProductCard>
-    </CarouselItem>
-    <CarouselItem>
-      <ProductCard></ProductCard>
-    </CarouselItem>
-  </CarouselContent>
-  <CarouselPrevious />
-  <CarouselNext />
-</Carousel>
+
       </div>
     </>
   );

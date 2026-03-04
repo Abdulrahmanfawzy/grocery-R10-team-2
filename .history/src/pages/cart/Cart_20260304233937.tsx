@@ -100,7 +100,7 @@ export default function Cart() {
           </div>
         </div>
 
-<Carousel className="w-full sm:max-w-xs md:max-w-xl mt-12 mx-auto">
+<Carousel className="w-full sm:max-w-xs md:max-w-2 mt-12 mx-auto">
   <CarouselContent>
     <CarouselItem>
       <ProductCard></ProductCard>

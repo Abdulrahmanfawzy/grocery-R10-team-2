@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { Card } from "@/components/ui/card";
 import ProductCard from "@/components/common/shared/ProductCard";
 export default function Cart() {
   return (
@@ -100,7 +101,7 @@ export default function Cart() {
           </div>
         </div>
 
-<Carousel className="w-full sm:max-w-xs md:max-w-xl mt-12 mx-auto">
+<Carousel className="w-full max-w-48 sm:max-w-xs mt-12 mx-auto">
   <CarouselContent>
     <CarouselItem>
       <ProductCard></ProductCard>
