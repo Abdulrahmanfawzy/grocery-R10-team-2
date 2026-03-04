@@ -11,8 +11,26 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { SuccessPopUp } from "@/components/common/Auth/SuccessPopUp";
 import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { ResetPasswordSchema } from "@/lib/schemas/ResetPasswordSchema";
+import type { ResetPasswordProps } from "@/lib/types/Forms";
 
 export const ResendPassword = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ResetPasswordProps>({
+    defaultValues: {
+      password: "",
+      confirmPassword: "",
+    },
+    resolver: zodResolver(ResetPasswordSchema),
+  });
+  const onSumbit: SubmitHandler<ResetPasswordProps> = () => {
+    setIsOpen(true);
+  };
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative py-4 px-2">
@@ -41,8 +59,17 @@ export const ResendPassword = () => {
                   <ShieldCheck />
                 </div>
 
-                <Input placeholder="Password" className=" w-full h-13 pl-10" />
+                <Input
+                  placeholder="Password"
+                  className={`w-full h-13 pl-10 ${errors.password ? "border-red-500" : ""}`}
+                  {...register("password")}
+                />
               </div>
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1 text-start">
+                  {errors.password.message}
+                </p>
+              )}
             </Field>
           </FieldGroup>
 
@@ -56,9 +83,15 @@ export const ResendPassword = () => {
 
                 <Input
                   placeholder="Confirm Password"
-                  className=" w-full h-13 pl-10"
+                  className={`w-full h-13 pl-10 ${errors.confirmPassword ? "border-red-500" : ""}`}
+                  {...register("confirmPassword")}
                 />
               </div>
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-xs mt-1 text-start">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
             </Field>
           </FieldGroup>
 
@@ -79,7 +112,7 @@ export const ResendPassword = () => {
 
           <Button
             className="w-80.25 h-13.5 mt-4 cursor-pointer"
-            onClick={() => setIsOpen(true)}
+            onClick={handleSubmit(onSumbit)}
           >
             Done
           </Button>

@@ -13,17 +13,18 @@ import { useNavigate } from "react-router-dom";
 
 export const SuccessPopUp = ({ isOpen, setIsOpen }: PopUpProps) => {
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isOpen) {
       const time = setTimeout(() => {
         setIsOpen(false);
         navigate("/Login");
-      }, 2000);
+      }, 3000);
       return () => clearTimeout(time);
     }
   }, [isOpen, navigate, setIsOpen]);
   return (
-    <Dialog open={isOpen} onOpenChange={() => navigate("/Login")}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="w-[400px] h-[350px] flex flex-column justify-center items-center">
         <DialogHeader className="flex flex-col items-center justify-center p-7  sm:max-w-[400px]">
           <div className="rounded-full p-0">
@@ -39,7 +40,9 @@ export const SuccessPopUp = ({ isOpen, setIsOpen }: PopUpProps) => {
 
           <Button
             className="w-[279px] mt-4 cursor-pointer"
-            onClick={() => navigate("/Login")}
+            onClick={() => {
+              navigate("/Login");
+            }}
           >
             Login
           </Button>

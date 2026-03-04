@@ -4,6 +4,7 @@ import { Login } from "./pages/Login";
 import PasswordRecovery from "./pages/PasswordRecovery";
 import VerificationCode from "./pages/VerificationCode";
 import { ResendPassword } from "./pages/ResendPassword";
+import { PasswordRecoveryWithPhone } from "./pages/PasswordRecoveryWithPhone";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "ResendPassword",
     element: <ResendPassword />,
+  },
+  {
+    path: "PasswordRecoveryWithPhone",
+    element: <PasswordRecoveryWithPhone />,
   },
 ]);
 

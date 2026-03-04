@@ -1,31 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChevronLeft, Mail } from "lucide-react";
+import { ChevronLeft, Phone } from "lucide-react";
 import { useState } from "react";
 import { PopUP } from "../components/common/Auth/PopUP";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import {
-  EmailSchema,
-  type EmailSchematype,
-} from "@/lib/schemas/PasswordRecovery";
-
-const PasswordRecovery = () => {
+import { PhoneSchema, type Phonetype } from "@/lib/schemas/PasswordRecovery";
+export const PasswordRecoveryWithPhone = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<EmailSchematype>({
+  } = useForm<Phonetype>({
     defaultValues: {
-      email: "",
+      phone: "",
     },
-    resolver: zodResolver(EmailSchema),
+    resolver: zodResolver(PhoneSchema),
   });
-  const onSumbit: SubmitHandler<EmailSchematype> = (data) => {
+  const onSumbit: SubmitHandler<Phonetype> = () => {
     setIsOpen(true);
-    console.log(data)
   };
 
   return (
@@ -44,34 +40,33 @@ const PasswordRecovery = () => {
         <div className="text-center mb-5">
           <p className="font-semibold text-[32px]">Password Recovery</p>
           <p className=" w-75 font-medium text-[16px] text-center tracking-tight gap-1">
-            Enter your Email to recover your password
+            Enter your Mobile Number to recover your password
           </p>
         </div>
         <div>
           <div className="relative w-80.25 ">
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300">
-              <Mail size={20} />
+              <Phone size={20} />
             </div>
             <Input
-              placeholder="Eamil"
-              className={`bg-gray-400 w-full h-13 pl-10 ${errors.email ? "border-red-500" : ""}`}
-              {...register("email")}
+              type="number"
+              placeholder="Phone Number"
+              className={`bg-gray-400 w-full h-13 pl-10 ${errors.phone ? "border-red-500" : ""}`}
+              {...register("phone")}
             />
           </div>
-          {errors.email && (
+          {errors.phone && (
             <p className="text-red-500 text-xs text-start mt-1">
-              {errors.email.message}
+              {errors.phone.message}
             </p>
           )}
-          <Link
-            to={"/PasswordRecoveryWithPhone"}
-            className="text-blue-500 text-[12px] "
-          >
-            Send By PhoneNumber
+
+          <Link to={"/PasswordRecovery"} className="text-blue-500 text-[12px] ">
+            Send By Email
           </Link>
 
           <Button
-            className="w-80.25 h-13.5  mt-12.5 cursor-pointer"
+            className="w-80.25 h-13.5 mt-12.5 cursor-pointer"
             onClick={handleSubmit(onSumbit)}
           >
             Verify
@@ -83,5 +78,3 @@ const PasswordRecovery = () => {
     </div>
   );
 };
-
-export default PasswordRecovery;

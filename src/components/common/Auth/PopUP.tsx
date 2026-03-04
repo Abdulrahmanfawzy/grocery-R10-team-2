@@ -10,15 +10,14 @@ import { CheckCircle2 } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-export const PopUP = ({ isOpen, setIsOpen }:PopUpProps ) => {
+export const PopUP = ({ isOpen, setIsOpen }: PopUpProps) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isOpen) {
       const time = setTimeout(() => {
         setIsOpen(false);
         navigate("/VerificationCode");
-      }, 1000);
+      }, 2000);
       return () => clearTimeout(time);
     }
   }, [isOpen, navigate, setIsOpen]);
