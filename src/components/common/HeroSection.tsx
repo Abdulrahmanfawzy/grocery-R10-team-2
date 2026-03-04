@@ -1,4 +1,3 @@
-import React from "react";
 
 type HeroSectionProps = {
     image: string;
@@ -46,9 +45,8 @@ const HeroSection = ({
                     <div>{title}</div>
                 </div>
             </div>
-
         </section>
-    );
+    )
 };
 
 export default HeroSection;

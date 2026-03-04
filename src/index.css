@@ -5,7 +5,6 @@
 @import "tw-animate-css";
 
 @layer components {
-
   .container {
     @apply mx-auto px-4;
   }
@@ -30,6 +29,7 @@
 @theme {
   --color-blue: #08ABFF;
   --color-overlay: #08415FC7;
+  --color-light-blue: #F7FCFF;
 }
 
 @custom-variant dark (&:is(.dark *));
