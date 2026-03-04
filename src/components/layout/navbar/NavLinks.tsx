@@ -1,4 +1,4 @@
-import { Home, LayoutGrid, type LucideIcon } from "lucide-react";
+import { Home, LayoutDashboard , type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type NavLinksProps = {
@@ -9,8 +9,8 @@ type NavLinksProps = {
 }
 
 const navLinks : NavLinksProps[] = [
-    { id: 1, labla: "Home", href: "/home", icon: Home },
-      { id: 2, labla: "Categories", href: "/categories", icon: LayoutGrid },
+    { id: 1, labla: "Home", href: "/", icon: Home },
+      { id: 2, labla: "Categories", href: "/categories", icon: LayoutDashboard  },
 
 ]
 const NavLinks = () => {
@@ -20,9 +20,10 @@ const NavLinks = () => {
         navLinks.map((link)=> {
           const Icon = link.icon ;
           return (
-            <Link className="flex items-center text-(--black) font-medium text-base" key={link.id} to={link.labla} >
+            <Link className="flex items-center text-(--black) font-medium text-base" key={link.id} to={link.href} >
               <Icon className="mr-1" size={24} />
-              {link.labla}</Link>
+              <span className="hidden md:block">{link.labla}</span>
+              </Link>
           )
         })
       }
