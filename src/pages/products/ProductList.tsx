@@ -2,8 +2,17 @@
 import HeroSection from "../../components/common/HeroSection"
 import bunner from "@/assets/productbunner.jpg";
 import Sidebar from "./SideBar";
+import { products } from "@/lib/constants/products";
+import ProductCard from "@/components/common/ProductCard";
+import { useState } from "react";
 
 const ProductList = () => {
+    const [selectedCategory, setSelectedCategory] = useState("All");
+    const filteredProducts = selectedCategory === "All" ? products
+        : products.filter
+            (
+                (p) => p.category === selectedCategory
+            );
     return (
         <>
             {/* Hero Section */}
@@ -15,36 +24,23 @@ const ProductList = () => {
                 height="h-96"
             />
 
-
             <div className="container py-8">
-                <Sidebar />
-            </div>
-            {/* Main Content */}
-            {/* <div className="container mx-auto px-4 py-8">
-                <div className="grid  gap-8">
-                    <aside className="md:w-64 shrink-0">
-                        <div className="bg-white rounded-xl shadow-sm p-4 sticky top-24">
-                            <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center justify-between">
-                                Categories
-                                <ChevronDown className="w-5 h-5 text-gray-500" />
-                            </h2>
-                            <ul className="space-y-1">
-                                {categories.map((category, index) => (
-                                    <CategoryItem key={index} name={category.name} count={category.count} />
-                                ))}
-                            </ul>
-                        </div>
+                <div className="flex gap-6">
+                    {/* Sidebar - 2 cols */}
+                    <aside className="min-w-40 shrink-0 ">
+                        <Sidebar onSelectCategory={setSelectedCategory} selectedCategory={selectedCategory} />
                     </aside>
 
-                    <main className="flex-1">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {products.map(product => (
+                    {/* Main Content */}
+                    <main className="flex-1 min-w-0">
+                        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {filteredProducts.map((product) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}
                         </div>
                     </main>
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }

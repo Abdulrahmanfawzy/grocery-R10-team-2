@@ -5,7 +5,6 @@
 @import "tw-animate-css";
 
 @layer components {
-
   .container {
     @apply mx-auto px-4;
   }
