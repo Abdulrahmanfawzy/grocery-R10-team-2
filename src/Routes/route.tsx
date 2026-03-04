@@ -9,7 +9,7 @@ import { createBrowserRouter } from "react-router-dom";
 export const route = createBrowserRouter([
   {
     path: "Register",
-    element: <Register/>,
+    element: <Register />,
   },
   {
     path: "Login",
