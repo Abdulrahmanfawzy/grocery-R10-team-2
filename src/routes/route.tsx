@@ -1,10 +1,9 @@
-import { Login } from "@/pages/Login";
-import PasswordRecovery from "@/pages/PasswordRecovery";
-import { PasswordRecoveryWithPhone } from "@/pages/PasswordRecoveryWithPhone";
-import { Register } from "@/pages/Register";
-import { ResendPassword } from "@/pages/ResendPassword";
-import VerificationCode from "@/pages/VerificationCode";
-
+import { Login } from "@/pages/Aurh/Login";
+import PasswordRecovery from "@/pages/Aurh/PasswordRecovery";
+import { PasswordRecoveryWithPhone } from "@/pages/Aurh/PasswordRecoveryWithPhone";
+import { Register } from "@/pages/Aurh/Register";
+import { ResendPassword } from "@/pages/Aurh/ResendPassword";
+import VerificationCode from "@/pages/Aurh/VerificationCode";
 import { createBrowserRouter } from "react-router-dom";
 
 export const route = createBrowserRouter([

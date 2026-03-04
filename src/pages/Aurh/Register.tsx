@@ -1,5 +1,5 @@
 import { RegisterForm } from "@/components/common/Auth/RegisterForm";
-import img from "../assets/background.png";
+import img from "../../assets/background.png";
 import { Facebook } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
