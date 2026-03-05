@@ -1,8 +1,8 @@
 import type { OrderSummary } from '@/lib/types/checkout.types';
-import cart1 from "@/assets/cart1.png";
-import cart2 from "@/assets/cart2.png";
-import cart3 from "@/assets/cart3.png";
-import cart4 from "@/assets/cart4.png";
+import cart1 from "@/assets/img/cart1.png";
+import cart2 from "@/assets/img/cart2.png";
+import cart3 from "@/assets/img/cart3.png";
+import cart4 from "@/assets/img/cart4.png";
 
 const orderSummary: OrderSummary = {
   items: [

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { PhoneSchema, type Phonetype } from "@/lib/schemas/PasswordRecovery";
-import { PopUP } from "@/components/common/Auth/PopUP";
+import { PopUP } from "@/components/Auth/PopUP";
 export const PasswordRecoveryWithPhone = () => {
   const [isOpen, setIsOpen] = useState(false);
 

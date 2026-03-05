@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./routes/AppRoutes";
-=======
+//app.tsx
 import { RouterProvider } from "react-router-dom";
-import { route } from "./Routes/route";
->>>>>>> parent of 1f44f03 (Merge branch 'feature/register' into dev)
+import { router } from "./routes/route";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-  );
-};
+    <RouterProvider router={router} />
+  )
+}
 export default App;

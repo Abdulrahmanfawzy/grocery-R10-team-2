@@ -1,10 +1,10 @@
-import Container from "../shared/Container"
-import backgroundImage from "../../../assets/Web/Hi-Fi/Hero/Rectangle 1.png"
-import ImageRight from "../../../assets/Web/Hi-Fi/Hero/heroimg.png";
+import Container from "../common/Container"
+import backgroundImage from "../../assets/Hero/Rectangle 1.png"
+// import ImageRight from "../../../assets/Web/Hi-Fi/Hero/heroimg.png";
 import { Button } from "@/components/ui/button"
 const Hero = () => {
   return (
-    <div className=" relative w-full  py-10 bg-cover bg-center text-white overflow-hidden" style={{backgroundImage :`url('${backgroundImage}')`}}>
+    <div className=" relative w-full  py-10 bg-cover bg-center text-white overflow-hidden" style={{ backgroundImage: `url('${backgroundImage}')` }}>
       {/* Color overlay */}
       <div className="absolute inset-0 z-0 bg-primary bg-opacity-50"></div>
       <Container>
@@ -18,11 +18,11 @@ const Hero = () => {
 
 
         </div>
-          {/* Right Content */}
+        {/* Right Content */}
 
-          
-            <img className="absolute top-0 right-0" src={ImageRight} alt="Hero Image" />
-          
+
+        {/* <img className="absolute top-0 right-0" src={ImageRight} alt="Hero Image" /> */}
+
       </Container>
     </div>
   )

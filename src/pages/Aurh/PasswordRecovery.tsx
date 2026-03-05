@@ -10,7 +10,7 @@ import {
   EmailSchema,
   type EmailSchematype,
 } from "@/lib/schemas/PasswordRecovery";
-import { PopUP } from "@/components/common/Auth/PopUP";
+import { PopUP } from "@/components/Auth/PopUP";
 
 const PasswordRecovery = () => {
   const [isOpen, setIsOpen] = useState(false);

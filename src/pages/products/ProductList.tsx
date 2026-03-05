@@ -1,10 +1,12 @@
 //  pages/product list 
 import HeroSection from "../../components/common/HeroSection"
-import bunner from "@/assets/productbunner.jpg";
+import bunner from "@/assets/img/productbunner.jpg";
 import Sidebar from "./SideBar";
 import { products } from "@/lib/constants/products";
 import ProductCard from "@/components/common/ProductCard";
 import { useState } from "react";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
 
 const ProductList = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -15,6 +17,7 @@ const ProductList = () => {
             );
     return (
         <>
+            <Navbar />
             {/* Hero Section */}
             <HeroSection
                 image={bunner}
@@ -41,6 +44,7 @@ const ProductList = () => {
                     </main>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

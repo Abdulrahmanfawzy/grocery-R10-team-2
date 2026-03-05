@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { SuccessPopUp } from "@/components/common/Auth/SuccessPopUp";
+import { SuccessPopUp } from "@/components/Auth/SuccessPopUp";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";

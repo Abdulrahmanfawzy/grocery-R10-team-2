@@ -1,5 +1,5 @@
-import { LoginForm } from "@/components/common/Auth/LoginForm";
-import img from "../../assets/background.png";
+import { LoginForm } from "@/components/Auth/LoginForm";
+import img from "../../assets/img/background.png";
 import { Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FcGoogle } from "react-icons/fc";
