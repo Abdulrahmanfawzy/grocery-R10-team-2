@@ -1,16 +1,18 @@
 
 import { Card } from "@/components/ui/card";
-import type { Product } from "@/lib/types/typesProducts";
-import Image from "../../assets/Hero/Rectangle 1.png";
+import Image from "../../assets/Home/Rectangle19.png";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import Rating from "./Rating";
-import type { ProductCardProps } from "@/lib/types/productType";
+import type { Product } from "@/lib/types/typesProducts";
 
+type Props = {
+  product : Product
+}
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product }: Props ) => {
   return (
-    <Card className="relative cursor-pointer hover:shadow-lg transition-shadow duration-300 p-4 overflow-hidden">
+      <Card className="relative cursor-pointer hover:shadow-lg transition-shadow border duration-300 p-4 overflow-hidden">
       {/* line overlay */}
       <div className="absolute  w-2 h-2/4 bg-white bottom-2 -right-2 rounded-full"></div>
       {/* Card Content */}
@@ -20,23 +22,23 @@ const ProductCard = ({ product }: ProductCardProps) => {
       >
         {product.variant === "sale"
           ? product.badges &&
-          product.badges.map((badge) => (
-            <span
-              key={badge}
-              className={` px-6 py-1 text-xs   text-white ${badge.includes("save") ? "bg-amber-500" : "bg-primary/80"} `}
-            >
-              {badge}
-            </span>
-          ))
+            product.badges.map((badge) => (
+              <span
+                key={badge}
+                className={` px-6 py-1 text-xs   text-white ${badge.includes("save") ? "bg-amber-500" : "bg-primary/80"} `}
+              >
+                {badge}
+              </span>
+            ))
           : product.badges &&
-          product.badges.map((badge) => (
-            <span
-              key={badge}
-              className="bg-primary px-3 py-1 text-xs   text-white rounded-tl-full rounded-br-full"
-            >
-              {badge}
-            </span>
-          ))}
+            product.badges.map((badge) => (
+              <span
+                key={badge}
+                className="bg-primary px-3 py-1 text-xs   text-white rounded-tl-full rounded-br-full"
+              >
+                {badge}
+              </span>
+            ))}
       </div>
 
       {/* Image */}

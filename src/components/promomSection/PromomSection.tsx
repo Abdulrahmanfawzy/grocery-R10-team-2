@@ -15,7 +15,7 @@ const PromomSection = () => {
                             <span className="bg-primary text-white text-sm px-4 py-1 rounded-full ">Free delivery</span>
                             <h2 className="text-3xl font-bold text-gray-800 ">Free delivery over £50</h2>
                             <p className="text-gray-500 font-medium">Shop £50 product and get free delivery anywhere.</p>
-                            <Button variant="primary" className="mt-4 px-8 py-6 cursor-pointer">Shop Now</Button>
+                            <Button variant="default" className="mt-4 px-8 py-6 cursor-pointer">Shop Now</Button>
                         </div>
                         <img src={ImageCard1} alt="image" className=" object-contain absolute bottom-0 right-0   " />
                     </div>
