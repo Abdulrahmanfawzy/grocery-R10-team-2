@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ChevronLeft } from "lucide-react";
 import {
@@ -39,7 +39,7 @@ const VerificationCode = () => {
     .padStart(2, "0");
   return (
     <div className=" relative py-4 px-2">
-      <Link to={"/PasswordRecovery"}>
+      <Link to={"/password-recovery"}>
         <Button className="bg-gray-400 rounded-full w-12.5 h-12.5 flex items-center justify-center cursor-pointer ">
           <ChevronLeft className="w-2.5" />
         </Button>
@@ -76,19 +76,16 @@ const VerificationCode = () => {
             Having trouble? Request a new OTP in {minits}.{seconds}
           </p>
 
-          <p className="text-[14px] text-gray-400 cursor-pointer "   onClick={handleReset}>
+          <p
+            className="text-[14px] text-gray-400 cursor-pointer "
+            onClick={handleReset}
+          >
             Rresend Code
           </p>
         </div>
 
-        <Link to={"/ResendPassword"}>
-          <Button
-            className="w-80.25 h-13.5 mt-4 cursor-pointer"
-          
-            
-          >
-            Verify
-          </Button>
+        <Link to={"/resend-password"}>
+          <Button className="w-80.25 h-13.5 mt-4 cursor-pointer">Verify</Button>
         </Link>
       </div>
     </div>
@@ -96,5 +93,3 @@ const VerificationCode = () => {
 };
 
 export default VerificationCode;
-
-

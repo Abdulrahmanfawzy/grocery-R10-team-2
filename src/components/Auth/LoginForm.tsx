@@ -67,7 +67,7 @@ export const LoginForm = () => {
       </Field>
 
       <div className="flex items-center gap-3.25">
-        <Link to={"/PasswordRecovery"} className="text-[14px]">
+        <Link to={"/password-recovery"} className="text-[14px]">
           Forget Password ?
         </Link>
       </div>

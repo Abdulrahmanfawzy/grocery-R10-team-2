@@ -16,7 +16,7 @@ export const PopUP = ({ isOpen, setIsOpen }: PopUpProps) => {
     if (isOpen) {
       const time = setTimeout(() => {
         setIsOpen(false);
-        navigate("/VerificationCode");
+        navigate("/verification-code");
       }, 2000);
       return () => clearTimeout(time);
     }

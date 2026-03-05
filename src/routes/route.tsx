@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
   // Home
   {
     path: "/",
-    element: <Mainlayout />, // 👈 هنا ال Navbar + Footer
+    element: <Mainlayout />,
     children: [
       {
         index: true,
@@ -61,11 +61,11 @@ export const router = createBrowserRouter([
 
   // Auth
   {
-    path: "/login",
+    path: "/Login",
     element: <Login />,
   },
   {
-    path: "/register",
+    path: "/Register",
     element: <Register />,
   },
   {

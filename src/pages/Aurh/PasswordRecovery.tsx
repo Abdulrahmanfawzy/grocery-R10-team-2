@@ -65,7 +65,7 @@ const PasswordRecovery = () => {
             </p>
           )}
           <Link
-            to={"/PasswordRecoveryWithPhone"}
+            to={"/password-recovery-phone"}
             className="text-blue-500 text-[12px] "
           >
             Send By PhoneNumber
