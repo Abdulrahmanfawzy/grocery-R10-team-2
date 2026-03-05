@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button"
-import { ShoppingCart  } from "lucide-react"
+import { LogIn, ShoppingCart, User  } from "lucide-react" 
+import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const NavActions = () => {
+  const [login , setLogin] = useState<boolean>(false) 
+  const toggleLogin = () => {
+    setLogin(!login)
+  }
+  
   return (
     <div className="flex items-center gap-4">
       {/* cart */}
@@ -13,8 +20,16 @@ const NavActions = () => {
       </div>
       
       {/* Sign Up Button */}
-      <Button variant="primary" className="cursor-pointer">
-        Sign Up
+      <Button onClick={toggleLogin} variant="primary" className="cursor-pointer  ">
+      {
+        login ? 
+
+        <><User size={18} /> <span className="hidden md:block">
+          <Link to={'profile'}>ibrahim</Link>
+           </span></>
+        :
+        <><LogIn size={18} /> <span className="hidden md:block">Sign In</span></>
+      }
       </Button>
     </div>
   )
