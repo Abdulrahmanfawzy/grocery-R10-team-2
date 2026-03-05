@@ -100,22 +100,27 @@ export default function Cart() {
           </div>
         </div>
 
-<Carousel className="w-full sm:max-w-xs md:max-w-xl mt-12 mx-auto">
+
+      </div>
+
+      <Carousel className="w-full sm:max-w-xs md:max-w-9/12 mt-12 mx-auto">
   <CarouselContent>
-    <CarouselItem>
+    <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
       <ProductCard></ProductCard>
     </CarouselItem>
-    <CarouselItem>
+    <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
       <ProductCard></ProductCard>
     </CarouselItem>
-    <CarouselItem>
+    <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
+      <ProductCard></ProductCard>
+    </CarouselItem>
+        <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
       <ProductCard></ProductCard>
     </CarouselItem>
   </CarouselContent>
   <CarouselPrevious />
   <CarouselNext />
 </Carousel>
-      </div>
     </>
   );
 }
