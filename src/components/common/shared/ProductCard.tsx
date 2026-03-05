@@ -1,5 +1,5 @@
 import imgProduct from "../../../assets/Product Image.png";
-// import { Rating } from "../shared/ٌRating.tsx";
+import { Rating } from "../shared/ٌRating.tsx";
 import { Badge } from "@/components/ui/badge";
 export default function ProductCard() {
   return (
@@ -25,7 +25,7 @@ export default function ProductCard() {
         </div>
       </div>
       <div className="rating">
-        {/* <Rating rating={4} /> <span>(3.8 / 5)</span> */}
+        <Rating rating={4} /> <span>(3.8 / 5)</span>
       </div>
       <div className="flex items-center gap-2 mt-4">
         <button className=" w-50 bg-[#0F3D53] text-white py-2 px-3 rounded-xl hover:opacity-90 transition">
