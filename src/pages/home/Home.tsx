@@ -187,14 +187,12 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
       <Hero />
       <ProductSection titleheading="Hot Deals" categories={categories} products={productsHot} />
       <ProductSection titleheading="New Product" categories={categories} products={productsNew} />
       <PromomSection />
       <ProductSection titleheading="Daily Best Sells" products={productsBest} discount />
       <FeaturesSection />
-      <Footer />
     </>
   )
 }
