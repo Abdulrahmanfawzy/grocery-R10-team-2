@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="relative z-10 flex items-center justify-between h-96">
           {/* Left Content */}
           <div className="max-w-xl space-y-6 ">
-            <h1 className="text-5xl font-medium leading-tight">Don’t miss our daily amazing deals.</h1>
+            <h1 className="text-5xl font-bold leading-tight">Don’t miss our daily amazing deals.</h1>
             <p className="text-gray-200 text-lg">Save up to 60% off on your first order</p>
             <Button variant='secondary' className="px-12 cursor-pointer" >Shop Now</Button>
           </div>

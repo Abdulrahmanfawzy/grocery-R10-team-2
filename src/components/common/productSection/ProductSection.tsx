@@ -7,10 +7,9 @@ type Props = {
     categories? : Category[];
     products : Product [];
     titleheading ?: string ;
-    col?: number ;
     discount?: boolean;
 }
-const ProductSection = ({ titleheading, categories, products, discount , col=5 }: Props) => {
+const ProductSection = ({ titleheading, categories, products, discount ,  }: Props) => {
   return (
     <Container>
     <div className="space-y-6 mt-18">
@@ -27,7 +26,7 @@ const ProductSection = ({ titleheading, categories, products, discount , col=5 }
             
         </div>
         {/* Product Cards */}
-        <div className={`mt-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5  gap-4`}
+        <div className={`mt-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5  gap-4`}
         >
 
             {products.map((product) => (

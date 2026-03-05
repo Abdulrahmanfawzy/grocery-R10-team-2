@@ -8,7 +8,7 @@ const PromomSection = () => {
         <Container>
             <div className=" mx-auto grid md:grid-cols-2 gap-2">
             {/* card1 */}
-            <div className="bg-gray-200 rounded-2xl pt-8 px-8 flex items-center justify-between overflow-hidden relative">
+            <div className="bg-gray-200 rounded-2xl p-8 px-8 flex items-center justify-between overflow-hidden relative">
                 <div className="space-y-6 max-w-xs relative z-10">
                     <span className="bg-primary text-white text-sm px-4 py-1 rounded-full ">Free delivery</span>
                     <h2 className="text-3xl font-bold text-gray-800 ">Free delivery over £50</h2>
