@@ -11,4 +11,10 @@ export interface Product {
     image: string;
     badges: string[];
     emoji: string;
+    by?: string
+    variant?: string
+    title?: string
 }
+export type ProductCardProps = {
+    product: Product;
+};

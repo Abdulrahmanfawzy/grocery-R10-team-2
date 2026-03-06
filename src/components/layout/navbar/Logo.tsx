@@ -1,8 +1,8 @@
-import image from "../../../assets/Web/Hi-Fi/Header/Logo.png";
+import image from "../../../assets/Header/Logo.png";
 const Logo = () => {
-  const logoSrc : string = image;
+  const logoSrc: string = image;
   return (
-    <>
+     <>
     <img src={logoSrc} alt="Logo" />
     </>
   )

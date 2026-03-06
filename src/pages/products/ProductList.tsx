@@ -1,6 +1,6 @@
 //  pages/product list 
 import HeroSection from "../../components/common/HeroSection"
-import bunner from "@/assets/productbunner.jpg";
+import bunner from "@/assets/img/productbunner.jpg";
 import Sidebar from "./SideBar";
 import { products } from "@/lib/constants/products";
 import ProductCard from "@/components/common/ProductCard";

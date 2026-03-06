@@ -1,8 +1,10 @@
+//app.tsx
 import { RouterProvider } from "react-router-dom";
-import { route } from "./routes/route";
+import { router } from "./routes/route";
 
 const App = () => {
-  return <RouterProvider router={route} />;
-};
-
+  return (
+    <RouterProvider router={router} />
+  )
+}
 export default App;
