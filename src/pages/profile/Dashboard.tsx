@@ -1,7 +1,12 @@
+import DashboardWelcome from "@/components/dashboard/DashboardWelcome"
+import OrderSection from "@/components/dashboard/OrderSection"
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+      <DashboardWelcome />
+      <OrderSection />
+    </div>
   )
 }
 

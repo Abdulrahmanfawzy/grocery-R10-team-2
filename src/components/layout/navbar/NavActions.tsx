@@ -30,7 +30,11 @@ const NavActions = () => {
           <Link to={'profile'}>ibrahim</Link>
            </span></>
         :
-        <><LogIn size={18} /> <span className="hidden md:block">Sign In</span></>
+        <><LogIn size={18} /> 
+        <Link  to={'/login'}>
+        <span className="hidden md:block">Sign In</span>
+        </Link>
+        </>
       }
       </Button>
     </div>

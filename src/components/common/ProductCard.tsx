@@ -12,7 +12,7 @@ type Props = {
 
 const ProductCard = ({ product }: Props ) => {
   return (
-      <Card className="relative cursor-pointer hover:shadow-lg transition-shadow border duration-300 p-4 overflow-hidden">
+      <Card  className="relative cursor-pointer hover:shadow-lg transition-shadow border duration-300 p-4 overflow-hidden">
       {/* line overlay */}
       <div className="absolute  w-2 h-2/4 bg-white bottom-2 -right-2 rounded-full"></div>
       {/* Card Content */}
