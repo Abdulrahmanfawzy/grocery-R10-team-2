@@ -82,7 +82,7 @@ const Sidebar = () => {
                 `flex items-center gap-3 px-3 py-4 rounded-lg text-sm transition
                 ${isActive
                   ? "bg-primary text-white duration-300 transition "
-                  : "text-gray-600 hover:bg-gray-100 duration-300 transition"}`
+                  : "text-gray-600 hover:bg-primary/90 hover:text-white duration-300 transition bg-blue-300/20 "}`
               }
                         >
 

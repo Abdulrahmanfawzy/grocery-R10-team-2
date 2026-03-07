@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export const Register = () => {
   return (
     <div
-      className="h-screen w-full flex flex-col  justify-end  lg:flex-row lg:justify-end bg-white "
+      className="h-screen bg-contain w-full flex flex-col  justify-end  lg:flex-row lg:justify-end bg-white "
       style={{
         backgroundImage: `url(${img})`,
         backgroundColor: "#014162C7",
