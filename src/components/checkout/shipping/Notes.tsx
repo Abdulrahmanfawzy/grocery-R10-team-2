@@ -8,13 +8,13 @@ function Notes() {
       </h2>
 
       <div className="border border-gray-200 rounded-xl p-6">
-        <div className="flex gap-6 items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center">
           <Input
             type="text"
             placeholder="Leave order infront of the door"
             className="py-2"
           />
-          <Input type="text" placeholder="Don’t Ring Bell" className="py-2" />
+          <Input type="text" placeholder="Don't Ring Bell" className="py-2" />
           <Input
             type="text"
             placeholder="Call 30 minutes in advance"

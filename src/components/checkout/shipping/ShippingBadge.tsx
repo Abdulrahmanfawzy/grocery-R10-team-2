@@ -20,12 +20,12 @@ function ShippingBadge({
       <h3>{title}</h3>
 
       <div className="flex gap-20">
-        <div className="flex gap-2 bg-(--silver) px-7.5 py-2.5 rounded-lg w-fit text-(--primary-color)">
+        <div className="flex gap-2 bg-gray-200 px-3 py-2.5 rounded-lg w-fit text-(--primary-color)">
           <IconOne strokeWidth={1} />
           <span>{delivery}</span>
         </div>
 
-        <div className="flex gap-1 bg-(--silver) px-7.5 py-2.5 rounded-lg w-fit text-(--primary-color)">
+        <div className="flex gap-1 bg-gray-200 px-2 py-2.5 rounded-lg w-fit text-(--primary-color)">
           <IconTwo strokeWidth={1} />
           <span>{pickUp}</span>
         </div>

@@ -1,7 +1,14 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ShippingBadge from "./ShippingBadge";
-import { BadgeDollarSign, Car, Clock, ClockFading, RotateCcw, Truck } from "lucide-react";
+import {
+  BadgeDollarSign,
+  Car,
+  Clock,
+  ClockFading,
+  RotateCcw,
+  Truck,
+} from "lucide-react";
 
 function Delivery() {
   return (
@@ -29,7 +36,7 @@ function Delivery() {
             />
           </div>
 
-          <div className="mt-4.75 flex gap-17.5">
+          <div className="mt-4.75 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <Input type="text" placeholder="City" />
             <Input type="text" placeholder="Provenance" />
             <Input type="text" placeholder="Postal Code" />

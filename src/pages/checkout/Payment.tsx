@@ -22,22 +22,23 @@ function Payment() {
           <PaymentMethod />
 
           {/* Order Summary */}
-          <div className="max-w-4xl">
+          <div className="w-full max-w-4xl">
             <h2 className="text-base font-semibold text-gray-800 mb-4 p-1">
               Order Summary
             </h2>
-            <div className="flex items-start gap-12 mb-12">
-              <div className="flex-[2] border border-gray-200 rounded-xl">
+            <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-16 mb-12">
+              <div className="w-full lg:flex-[2] border border-gray-200 rounded-xl">
                 <OrderItemsScroll />
               </div>
-              <div className="flex-1">
+              <div className="w-full lg:flex-1">
                 <AmountSection />
               </div>
             </div>
           </div>
-          <div className="max-w-sm">
+
+          <div className="w-full sm:max-w-sm">
             <ButtonPrimary
-              btn={"Confirm Payment & Go To Checkout "}
+              btn={"Confirm Payment & Go To Checkout"}
               btnWidth={"w-full"}
               onClick={() => navigate("/checkout/confirmation")}
             />

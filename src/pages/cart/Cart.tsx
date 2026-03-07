@@ -6,9 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
-import Navbar from "@/components/layout/navbar/Navbar";
-import Footer from "@/components/layout/Footer";
+} from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
 import ProductCartEslam from "@/components/common/ProductCartEslam";
 export default function Cart() {
@@ -18,12 +16,10 @@ export default function Cart() {
         <h3 className="my-6 text-2xl">Products In Cart</h3>
         <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 ">
           <div className="grid grid-cols-1 lg:grid-cols-2 divide-x">
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
           </div>
         </div>
 
@@ -51,7 +47,9 @@ export default function Cart() {
                 <span> 1881.45</span>
               </div>
 
-              <Link to="/shipping" className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition">
+              <Link
+                to="/checkout"
+                className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition">
                 Go To Checkout
               </Link>
             </div>
@@ -103,8 +101,6 @@ export default function Cart() {
             </div>
           </div>
         </div>
-
-
       </div>
 
       <Carousel className="w-full sm:max-w-xs md:max-w-9/12 mt-12 mx-auto">
@@ -125,7 +121,7 @@ export default function Cart() {
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
-      </Carousel >
+      </Carousel>
     </>
   );
 }
