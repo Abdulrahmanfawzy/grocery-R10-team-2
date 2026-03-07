@@ -1,7 +1,10 @@
+import Wallet from "@/components/dashboard/paymentWallet/Wallet"
 
 const PaymentWallet = () => {
   return (
-    <div>PaymentWallet</div>
+    <div>
+      <Wallet />
+    </div>
   )
 }
 
