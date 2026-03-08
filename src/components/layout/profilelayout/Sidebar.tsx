@@ -61,7 +61,7 @@ const Sidebar = () => {
     }
   ]
   return (
-    <div className='bg-gray-100 p-4 rounded-xl border'>
+    <div className='bg-gray-100 p-4 rounded-xl border sticky top-32 transition duration-300 '>
         {/* UserInfo */}
         <div className='flex items-center gap-3 pb-4 border-b pt-4'>
             <img src={ImageUser} alt="" className='w-12 h-12 rounded-full' />

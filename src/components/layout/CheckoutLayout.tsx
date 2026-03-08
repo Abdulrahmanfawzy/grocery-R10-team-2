@@ -1,6 +1,4 @@
 import type { ReactNode } from "react"
-import Footer from "./Footer"
-import Navbar from "./navbar/Navbar"
 
 type CheckoutLayoutProps = {
     children: ReactNode;
@@ -9,11 +7,9 @@ type CheckoutLayoutProps = {
 const CheckoutLayout = ({children} : CheckoutLayoutProps) => {
   return (
     <>
-        <Navbar />
         <main>
             {children}
         </main>
-        <Footer />
     </>
   )
 }

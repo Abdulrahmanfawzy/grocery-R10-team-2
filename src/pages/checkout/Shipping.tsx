@@ -18,7 +18,7 @@ function Shipping() {
         <div className="max-w-6xl mx-auto py-5 px-5">
           <CheckoutBreadcrumb />
           <CheckoutStepper />
-          <div className="grid grid-cols-2 gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
             <div className="flex flex-col gap-6">
               <ContactInfo />
               <Delivery />
@@ -30,7 +30,7 @@ function Shipping() {
 
           <ButtonPrimary
             btn={"Continue Checkout"}
-            btnWidth={"w-[40%]"}
+            btnWidth={"w-full sm:w-[60%] lg:w-[40%]"}
             onClick={() => navigate("/checkout/payment")}
           />
         </div>

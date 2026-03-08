@@ -3,11 +3,11 @@ import OrderItemsScroll from "../../common/OrderItemsScroll";
 
 function OrderSummary() {
   return (
-    <div className="max-w-md">
-      <h2 className="text-base font-semibold text-gray-800 mb-4">
+    <div className="w-full max-w-md mx-auto lg:mx-0">
+      <h2 className="text-base font-semibold text-gray-800 mb-4 p-1">
         Order Summary
       </h2>
-      <div className=" border border-gray-200 rounded-xl ">
+      <div className="border border-gray-200 rounded-xl">
         <OrderItemsScroll />
         <div className="mt-2 p-3">
           <h3 className="text-(--primary-color) font-medium">Total Amount</h3>

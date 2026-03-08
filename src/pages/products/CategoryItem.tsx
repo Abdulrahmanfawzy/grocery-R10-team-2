@@ -20,7 +20,7 @@ const CategoryItem = ({ name, icon, onClick, active }: Props) => {
                 {icon && (
                     <img src={icon} className="w-5 h-5" alt={name} />
                 )}
-                <span className="px-2 hidden sm:inline">{name}</span>
+                <span className="px-2">{name}</span>
             </Button>
         </li>
     );

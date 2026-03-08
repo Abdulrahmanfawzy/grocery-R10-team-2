@@ -10,7 +10,7 @@ type NavLinksProps = {
 
 const navLinks : NavLinksProps[] = [
     { id: 1, labla: "Home", href: "/", icon: Home },
-      { id: 2, labla: "Categories", href: "/categories", icon: LayoutDashboard  },
+      { id: 2, labla: "Categories", href: "/products", icon: LayoutDashboard  },
 
 ]
 const NavLinks = () => {

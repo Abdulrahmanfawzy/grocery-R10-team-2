@@ -14,7 +14,7 @@ function CheckoutStepper() {
   const currentIndex = stepOrder[currentStep];
 
   return (
-    <div className="flex items-center justify-center mb-8 mt-8">
+    <div className="flex items-center justify-center mb-8 mt-8 px-2">
       {steps.map((step, index) => {
         const isCompleted = index < currentIndex;
         const isActive = index === currentIndex;
@@ -24,21 +24,24 @@ function CheckoutStepper() {
             <div className="flex flex-col items-center">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white
-              ${isCompleted || isActive ? "bg-(--primary-color)" : "bg-(--silver)"}
-            `}>
-                {isCompleted ? <Check className="w-4 h-4" /> : index + 1}
+                  ${isCompleted || isActive ? "bg-(--primary-color)" : "bg-(--silver)"}`}>
+                {isCompleted || (isActive && index === steps.length - 1) ? (
+                  <Check className="w-4 h-4" />
+                ) : (
+                  index + 1
+                )}
               </div>
               <span
-                className={`text-sm mt-1
-              ${isCompleted || isActive ? "text-(--primary-color) font-medium" : "text-(--silver)"}
-            `}>
+                className={`hidden sm:block text-xs sm:text-sm mt-1 text-center max-w-[80px]
+                  ${isCompleted || isActive ? "text-(--primary-color) font-medium" : "text-(--silver)"}`}>
                 {step.label}
               </span>
             </div>
 
             {index < steps.length - 1 && (
               <div
-                className={`w-62.25 h-px mx-2 mb-5 ${index < currentIndex ? "bg-(--primary-color)" : "bg-(--silver)"}`}
+                className={`w-8 sm:w-16 md:w-32 lg:w-62.25 h-px mx-1 sm:mx-2 mb-0 sm:mb-5
+                  ${index < currentIndex ? "bg-(--primary-color)" : "bg-(--silver)"}`}
               />
             )}
           </div>
