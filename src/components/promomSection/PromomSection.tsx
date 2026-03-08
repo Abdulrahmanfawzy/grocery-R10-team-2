@@ -4,6 +4,7 @@ import ImageCard1 from "../../assets/img/Offer1-img.png"
 import ImageCard2 from "../../assets/img/Offer2-img.png"
 
 import Container from "../common/Container"
+import { Link } from "react-router-dom"
 const PromomSection = () => {
     return (
         <div className="py-12">
@@ -15,7 +16,9 @@ const PromomSection = () => {
                             <span className="bg-primary text-white text-sm px-4 py-1 rounded-full ">Free delivery</span>
                             <h2 className="text-3xl font-bold text-gray-800 ">Free delivery over £50</h2>
                             <p className="text-gray-500 font-medium">Shop £50 product and get free delivery anywhere.</p>
-                            <Button variant="primary" className="mt-4 px-8 py-6 cursor-pointer">Shop Now</Button>
+                           <Link to="/products">
+                            <Button variant="default" className="mt-4 px-8 py-6 cursor-pointer">Shop Now</Button>
+                           </Link>
                         </div>
                         <img src={ImageCard1} alt="image" className=" object-contain absolute bottom-0 right-0   " />
                     </div>
@@ -25,7 +28,9 @@ const PromomSection = () => {
                             <span className="bg-gray-200 text-primary text-sm px-4 py-1 rounded-full ">60% off</span>
                             <h2 className="text-3xl font-bold text-gray-800 ">Organic Food</h2>
                             <p className="text-white font-medium">Save up to 60% off on your first order</p>
+                            <Link to="/products">
                             <Button variant="secondary" className="mt-4 px-8 py-6 text-primary cursor-pointer">Shop Now</Button>
+                            </Link>
                         </div>
                         <img src={ImageCard2} alt="image" className=" object-contain absolute bottom-0 right-0   " />
                     </div>

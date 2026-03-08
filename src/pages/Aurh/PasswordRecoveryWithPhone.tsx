@@ -62,7 +62,10 @@ export const PasswordRecoveryWithPhone = () => {
             </p>
           )}
 
-          <Link to={"/PasswordRecovery"} className="text-blue-500 text-[12px] ">
+          <Link
+            to={"/password-recovery"}
+            className="text-blue-500 text-[12px] "
+          >
             Send By Email
           </Link>
 

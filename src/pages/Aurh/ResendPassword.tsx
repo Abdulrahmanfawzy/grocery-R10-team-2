@@ -34,7 +34,7 @@ export const ResendPassword = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative py-4 px-2">
-      <Link to={"/PasswordRecovery"}>
+      <Link to={"/password-recovery"}>
         <Button className="bg-gray-400 rounded-full w-12.5 h-12.5 flex items-center justify-center cursor-pointer ">
           <ChevronLeft className="w-2.5" />
         </Button>

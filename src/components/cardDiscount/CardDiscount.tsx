@@ -1,9 +1,9 @@
 import { Card } from "@/components/ui/card"
-import backgroundImage from "../../assets/Hero/Rectangle 1.png"
+import backgroundImage from "../../assets/Hero/Rectangle1.png"
 import { Button } from "@/components/ui/button"
 const CardDiscount = () => {
   return (
-    <Card style={{ backgroundImage: `url('${backgroundImage}')` }} className="relative p-4 overflow-hidden text-white ">
+    <Card style={{ backgroundImage: `url('${backgroundImage}')` }} className="relative bg-contain p-4 overflow-hidden text-white ">
       {/* overlay */}
       <div className="absolute inset-0 bg-primary"></div>
       {/* Content */}

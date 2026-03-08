@@ -38,9 +38,13 @@ function PaymentMethod() {
     <div className="border border-gray-200 rounded-xl p-6 mb-6">
       <h2 className="text-base font-medium mb-4">Payment Method</h2>
 
-      <SecureCheckout />
+      <SecureCheckout
+        title="Secure Checkout"
+        desc="Your information is encrypted and secure. We never store your full
+          card details."
+      />
 
-      <div className="grid grid-cols-2 gap-8 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-6">
         <div className="flex flex-col gap-4">
           {/* Saved Cards */}
           <SavedCards />
@@ -48,7 +52,7 @@ function PaymentMethod() {
           <PromoCard />
         </div>
 
-          {/* Other Payment Methods */}
+        {/* Other Payment Methods */}
         <div className="flex flex-col gap-3">
           <h3 className="text-sm font-semibold text-gray-800">
             Other Payment Methods
@@ -66,4 +70,5 @@ function PaymentMethod() {
     </div>
   );
 }
+
 export default PaymentMethod;

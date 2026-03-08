@@ -1,6 +1,6 @@
 
 import Container from '../common/Container'
-import tag from '../../assets/icons/Group.png'
+import tag from '../../assets/img/Group.png'
 import RefreshCcw from '../../assets/img/svgexport-6 (3) 1.png'
 import Truck from '../../assets/img/Vector.png'
 type Feature = {

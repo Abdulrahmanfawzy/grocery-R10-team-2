@@ -33,7 +33,7 @@ function AmountSection() {
           </p>
         </div>
 
-        <div className="space-y-3 bg-(--silver) text-(--primary-color) rounded-md p-4">
+        <div className="space-y-3 bg-gray-200 text-(--primary-color) rounded-md p-4">
           <h4>Billing Address will be:</h4>
           <p>Villa 14, Street 23, District 5 New Cairo and Cairo 11835</p>
         </div>

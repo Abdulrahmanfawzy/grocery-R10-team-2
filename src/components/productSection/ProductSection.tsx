@@ -7,10 +7,9 @@ type Props = {
     categories?: Category[];
     products: Product[];
     titleheading?: string;
-    col?: number;
     discount?: boolean;
 }
-const ProductSection = ({ titleheading, categories, products, discount, col = 5 }: Props) => {
+const ProductSection = ({ titleheading, categories, products, discount,  }: Props) => {
     return (
         <Container>
             <div className="space-y-6 mt-18">

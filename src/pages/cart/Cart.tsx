@@ -1,8 +1,19 @@
 import CartItem from "../../components/common/CartItem";
+<<<<<<< HEAD
 import CarouselData from "../../components/common/CarouselData";
 import imgProduct from "../../assets/img/ProductImage.png";
 // import { useForm,SubmitHandler} from "react-hook-form"
 // import type {cartInputs} from "../../lib/types/cartTypes";
+=======
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+>>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
 import { Link } from "react-router-dom";
 import type { cartItem } from "@/lib/types/cartTypes";
 const title:string = "Exlore More"
@@ -68,11 +79,20 @@ export default function Cart() {
     <>
       <div className="bg-white p-6  w-full md:w-10/12 lg:w-9/12 mx-auto">
         <h3 className="my-6 text-2xl">Products In Cart</h3>
+<<<<<<< HEAD
         <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 px-3">
           <div className="grid grid-cols-1 lg:grid-cols-2 divide-">
             {cartProducts.map((product) => {
               return <CartItem productInfo={product} key={product.id}></CartItem>;
             })}
+=======
+        <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 divide-x">
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+>>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
           </div>
         </div>
 
@@ -101,9 +121,14 @@ export default function Cart() {
               </div>
 
               <Link
+<<<<<<< HEAD
                 to="/shipping"
                 className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition"
               >
+=======
+                to="/checkout"
+                className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition">
+>>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
                 Go To Checkout
               </Link>
             </div>
@@ -155,7 +180,29 @@ export default function Cart() {
         </div>
       </div>
 
+<<<<<<< HEAD
 <CarouselData heading={title}></CarouselData>
+=======
+      <Carousel className="w-full sm:max-w-xs md:max-w-9/12 mt-12 mx-auto">
+        <CarouselContent>
+          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
+            <ProductCartEslam />
+          </CarouselItem>
+          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
+            {/* <ProductCard /> */}
+            <ProductCartEslam />
+          </CarouselItem>
+          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
+            <ProductCartEslam />
+          </CarouselItem>
+          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
+            <ProductCartEslam />
+          </CarouselItem>
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+>>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
     </>
   );
 }

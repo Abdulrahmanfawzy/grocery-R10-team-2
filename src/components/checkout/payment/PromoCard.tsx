@@ -20,7 +20,7 @@ function PromoCard() {
             className="text-sm flex-1 outline-none text-gray-600 placeholder:text-gray-300"
           />
         </div>
-        <button className="bg-(--silver) text-(--primary-color) text-sm font-medium px-4 py-2 rounded-md w-fit">
+        <button className="bg-gray-200 text-(--primary-color) text-sm font-medium px-4 py-2 rounded-md w-fit">
           Apply Code
         </button>
       </div>
