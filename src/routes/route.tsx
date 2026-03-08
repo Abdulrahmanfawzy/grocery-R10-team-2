@@ -11,6 +11,7 @@ import Confirmation from "@/pages/checkout/Confirmation";
 import Payment from "@/pages/checkout/Payment";
 import Shipping from "@/pages/checkout/Shipping";
 import Home from "@/pages/home/Home";
+import ProductDetails from "@/pages/productDetails/ProductDetails";
 import ProductList from "@/pages/products/ProductList";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+         {
+        path: "product-details/:id",
+        element: <ProductDetails />,
       },
 
       {

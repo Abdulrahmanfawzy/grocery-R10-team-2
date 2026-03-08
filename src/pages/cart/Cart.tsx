@@ -1,33 +1,82 @@
 import CartItem from "../../components/common/CartItem";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import Navbar from "@/components/layout/navbar/Navbar";
-import Footer from "@/components/layout/Footer";
+import CarouselData from "../../components/common/CarouselData";
+import imgProduct from "../../assets/img/ProductImage.png";
+// import { useForm,SubmitHandler} from "react-hook-form"
+// import type {cartInputs} from "../../lib/types/cartTypes";
 import { Link } from "react-router-dom";
-import ProductCartEslam from "@/components/common/ProductCartEslam";
+import type { cartItem } from "@/lib/types/cartTypes";
+const title:string = "Exlore More"
+
 export default function Cart() {
+// const {register} = useForm<cartInputs>()
+// const onSubmit:SubmitHandler<cartInputs> = (data)=>{
+// console.log(data);
+// }
+
+
+  const cartProducts: cartItem[] = [
+    {
+      id: 1,
+      name: "Apple",
+      img: imgProduct,
+      price: 100,
+      quantity: 2,
+      inStock:"in Stock"
+    },
+    {
+      id: 2,
+      name: "Orange",
+      img: imgProduct,
+      price: 80,
+      quantity: 1,
+      inStock:"in Stock"
+    },
+    {
+      id: 3,
+      name: "Banana",
+      img: imgProduct,
+      price: 60,
+      quantity: 3,
+      inStock:"in Stock"
+    },
+    {
+      id: 4,
+      name: "Mango",
+      img: imgProduct,
+      price: 120,
+      quantity: 1,
+      inStock:"in Stock"
+    },
+    {
+      id: 5,
+      name: "Strawberry",
+      img: imgProduct,
+      price: 150,
+      quantity: 0,
+      inStock:"in Stock"
+    },
+    {
+      id: 6,
+      name: "Grapes",
+      img: imgProduct,
+      price: 90,
+      quantity: 4,
+      inStock:"in Stock"
+    },
+  ];
   return (
     <>
       <div className="bg-white p-6  w-full md:w-10/12 lg:w-9/12 mx-auto">
         <h3 className="my-6 text-2xl">Products In Cart</h3>
-        <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 ">
-          <div className="grid grid-cols-1 lg:grid-cols-2 divide-x">
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-
+        <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 px-3">
+          <div className="grid grid-cols-1 lg:grid-cols-2 divide-">
+            {cartProducts.map((product) => {
+              return <CartItem productInfo={product} key={product.id}></CartItem>;
+            })}
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 my-6">
+        <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div>
             <h2 className="text-lg font-medium mb-4">Total Amount</h2>
 
@@ -51,7 +100,10 @@ export default function Cart() {
                 <span> 1881.45</span>
               </div>
 
-              <Link to="/shipping" className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition">
+              <Link
+                to="/shipping"
+                className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition"
+              >
                 Go To Checkout
               </Link>
             </div>
@@ -63,20 +115,19 @@ export default function Cart() {
             </h2>
 
             <div className="bg-white border rounded-lg p-6 space-y-6">
-              <div>
+              <div className="">
                 <label className="text-sm text-gray-700 block mb-2">
                   Promo Code
                 </label>
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 flex-col xl:flex-row">
                   <input
                     type="text"
-                    value="Save10"
-                    readOnly
+                    placeholder="Your Coupon Code ........."
                     className="flex-1 border rounded-md px-3 py-2 bg-gray-50 text-sm outline-none"
+                    
                   />
-
-                  <button className="bg-gray-300 px-5 rounded-md text-sm">
+                  <button className="bg-gray-300 px-4 py-3 rounded-md text-sm cursor-pointer">
                     Apply Code
                   </button>
                 </div>
@@ -87,15 +138,14 @@ export default function Cart() {
                   Delivery Address
                 </label>
 
-                <div className="flex gap-3">
+                <div className="flex gap-2 flex-col lg:flex-row">
                   <input
                     type="text"
-                    value="Villa 14, Street 23, District 5, New Cairo, Cairo"
-                    readOnly
+                    placeholder="Your Address ......."
                     className="flex-1 border rounded-md px-3 py-2 bg-gray-50 text-sm outline-none"
+                    // {...register("address")}
                   />
-
-                  <button className="bg-gray-300 px-5 rounded-md text-sm">
+                  <button className="bg-gray-300 px-4 py-3 cursor-pointer rounded-md text-sm">
                     Edit
                   </button>
                 </div>
@@ -103,29 +153,9 @@ export default function Cart() {
             </div>
           </div>
         </div>
-
-
       </div>
 
-      <Carousel className="w-full sm:max-w-xs md:max-w-9/12 mt-12 mx-auto">
-        <CarouselContent>
-          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
-            <ProductCartEslam />
-          </CarouselItem>
-          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
-            {/* <ProductCard /> */}
-            <ProductCartEslam />
-          </CarouselItem>
-          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
-            <ProductCartEslam />
-          </CarouselItem>
-          <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
-            <ProductCartEslam />
-          </CarouselItem>
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel >
+<CarouselData heading={title}></CarouselData>
     </>
   );
 }
