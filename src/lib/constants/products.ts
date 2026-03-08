@@ -1,6 +1,16 @@
 // Sample data
 
 // Data ───────────────────────────────────────────────────────────────────
+
+
+import veg from '@/assets/icons/vegetables.png'
+import veg1 from '@/assets/icons/Frame 46.png'
+import veg2 from '@/assets/icons/healthicons_dairy-outline.png'
+import veg3 from '@/assets/icons/Group.png'
+import veg4 from '@/assets/icons/mdi_meat-outline.png'
+import type { Product } from '../types/productType';
+
+
 export const products: Product[] = [
     // Fruits
     {
@@ -150,19 +160,20 @@ export const products: Product[] = [
         emoji: "🌀",
     },
 ];
-
-import veg from '@/assets/icons/vegetables.png'
-import veg1 from '@/assets/icons/Frame 46.png'
-import veg2 from '@/assets/icons/healthicons_dairy-outline.png'
-import veg3 from '@/assets/icons/Group.png'
-import veg4 from '@/assets/icons/mdi_meat-outline.png'
-import type { Product } from '../types/productType';
+// export const categories = [
+//     { name: 'Vegetables', icon: veg },
+//     { name: 'Fruits', icon: veg1 },
+//     { name: 'Dairy & Eggs', icon: veg2 },
+//     { name: 'Bakery', icon: veg3 },
+//     { name: 'Seafood', icon: veg4 },
+//     { name: 'Meats', icon: veg }
+// ];
 
 export const categories = [
-    { name: 'Vegetables', icon: veg },
-    { name: 'Fruits', icon: veg1 },
-    { name: 'Dairy & Eggs', icon: veg2 },
-    { name: 'Bakery', icon: veg3 },
-    { name: 'Seafood', icon: veg4 },
-    { name: 'Meats', icon: veg }
+    { id: "vegetables", label: "Vegetables", icon: veg },
+    { id: "fruits", label: "Fruites", icon: veg1 },
+    { id: "dairy", label: "Dairy & Eggs", icon: veg2 },
+    { id: "bakery", label: "Bakery", icon: veg3 },
+    { id: "seafood", label: "Seafood", icon: veg4 },
+    { id: "meats", label: "Meats", icon: veg },
 ];
