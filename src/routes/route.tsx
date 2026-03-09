@@ -44,14 +44,11 @@ export const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
-<<<<<<< HEAD
-         {
+      {
         path: "product-details/:id",
         element: <ProductDetails />,
       },
 
-=======
->>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
       {
         path: "checkout",
         children: [
