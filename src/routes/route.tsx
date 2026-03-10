@@ -1,4 +1,5 @@
 //route.tsx
+import { ProtectesRoute } from "@/components/Auth/ProtectedRoutes/ProtectesRoute";
 import Mainlayout from "@/components/layout/mainLayout/Mainlayout";
 import Profilelayout from "@/components/layout/profilelayout/Profilelayout";
 import { Login } from "@/pages/Aurh/Login";
@@ -93,27 +94,20 @@ export const router = createBrowserRouter([
 
   // Auth
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/password-recovery",
-    element: <PasswordRecovery />,
-  },
-  {
-    path: "/password-recovery-phone",
-    element: <PasswordRecoveryWithPhone />,
-  },
-  {
-    path: "/verification-code",
-    element: <VerificationCode />,
-  },
-  {
-    path: "/resend-password",
-    element: <ResendPassword />,
+    element: <ProtectesRoute />,
+    children: [
+      { path: "/Login", element: <Login /> },
+      {
+        path: "/Register",
+        element: <Register />,
+      },
+      { path: "/password-recovery", element: <PasswordRecovery /> },
+      {
+        path: "/password-recovery-phone",
+        element: <PasswordRecoveryWithPhone />,
+      },
+      { path: "/verification-code", element: <VerificationCode /> },
+      { path: "/resend-password", element: <ResendPassword /> },
+    ],
   },
 ]);
