@@ -1,16 +1,27 @@
+// <<<<<<< HEAD
+// import { Button } from "@/components/ui/button"
+// import { LogIn, ShoppingCart, User  } from "lucide-react"
+// import { useState } from "react"
+// import { Link } from "react-router-dom"
+
+// const NavActions = () => {
+//   const [login , setLogin] = useState<boolean>(false)
+//   const toggleLogin = () => {
+//     setLogin(!login)
+//   }
+
 import { Button } from "@/components/ui/button";
-import { LogIn, ShoppingCart, User } from "lucide-react";
-import { useState } from "react";
+import { useLogout } from "@/hooks/useLogout";
+import { useAppSelector } from "@/store/hook";
+import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const NavActions = () => {
-  const [login, setLogin] = useState<boolean>(false);
-  const toggleLogin = () => {
-    setLogin(!login);
-  };
-
+  const user = useAppSelector((state) => state.login.currentUser);
+  const token = useAppSelector((state) => state.login.token);
+  const { LogOut, isPending } = useLogout();
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 shrink-0">
       {/* cart */}
       <Link to="cart">
         <div className="flex relative items-center gap-2 cursor-pointer">
@@ -26,27 +37,22 @@ const NavActions = () => {
       </Link>
 
       {/* Sign Up Button */}
-      <Button
-        onClick={toggleLogin}
-        variant="default"
-        className="cursor-pointer  "
-      >
-        {login ? (
-          <>
-            <User size={18} />{" "}
-            <span className="hidden md:block">
-              <Link to={"profile"}>ibrahim</Link>
-            </span>
-          </>
-        ) : (
-          <>
-            <LogIn size={18} />
-            <Link to={"/login"}>
-              <span className="hidden md:block">Sign In</span>
-            </Link>
-          </>
-        )}
-      </Button>
+      {user ? (
+        <Button
+          variant="default"
+          onClick={() => token && LogOut(token)}
+          disabled={isPending}
+          className="cursor-pointer"
+        >
+          {isPending ? "Loading..." : "LogOUt"}
+        </Button>
+      ) : (
+        <Link to={"/Register"}>
+          <Button variant="default" className="cursor-pointer">
+            Sign Up
+          </Button>
+        </Link>
+      )}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/image-gallery.css";
-import type {ImageGalleryRef } from "react-image-gallery";
-import type {galleryProps} from "../../lib/types/productDetailsTypes"
+import type { ImageGalleryRef } from "react-image-gallery";
+import type { galleryProps } from "../../lib/types/productDetailsTypes"
 
 // const images: GalleryItem[] = [
 //   {
@@ -20,18 +20,18 @@ import type {galleryProps} from "../../lib/types/productDetailsTypes"
 // ];
 
 
-export default function ProductDetailsGallery({images}:galleryProps) {
+export default function ProductDetailsGallery({ images }: galleryProps) {
 
-      const galleryRef = useRef<ImageGalleryRef>(null);
+  const galleryRef = useRef<ImageGalleryRef>(null);
   return <>
-        <ImageGallery
+    <ImageGallery
       showFullscreenButton={false}
       showPlayButton={false}
       showNav={false}
       ref={galleryRef}
       items={images}
-      
+
       onSlide={(index) => console.log("Slid to", index)}
-      />
+    />
   </>
 }

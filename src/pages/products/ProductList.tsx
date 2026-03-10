@@ -2,21 +2,18 @@
 import HeroSection from "../../components/common/HeroSection"
 import bunner from "@/assets/img/productbunner.jpg";
 import Sidebar from "./SideBar";
-import { products } from "@/lib/constants/products";
 import ProductCard from "@/components/common/ProductCard";
 import { useState } from "react";
 import FeaturesSection from "@/components/featuresSection/FeaturesSection";
 import { SlidersHorizontal } from "lucide-react";
+import useGetProducts from "@/hooks/useGetProducts";
+import ProductCardSkeleton from "@/components/common/ProductCardSkeleton";
 
 const ProductList = () => {
-    const [activeCategory, setActiveCategory] = useState("fruits");
-    const [selectedCategory, setSelectedCategory] = useState("All");
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const filteredProducts = selectedCategory === "All" ? products
-        : products.filter
-            (
-                (p) => p.category === selectedCategory
-            );
+
+    const { data: productData = [], isLoading } = useGetProducts();
+
     return (
         <>
             {/* Hero Section */}
@@ -74,8 +71,8 @@ const ProductList = () => {
                         </div>
 
                         <Sidebar
-                            setActiveCategory={setActiveCategory}
-                            activeCategory={activeCategory}
+                        // setActiveCategory={setActiveCategory}
+                        // activeCategory={activeCategory}
                         />
                     </aside>
 
@@ -83,9 +80,18 @@ const ProductList = () => {
                     {/* Main Content */}
                     <main className="flex-1 min-w-0">
                         <div className=" grid grid-cols-1 sm:grid-cols-2   xl:grid-cols-3 gap-4">
-                            {filteredProducts.map((product) => (
-                                <ProductCard key={product.id} product={product} version="v2" />
-                            ))}
+                            {isLoading
+                                ? Array.from({ length: 6 }).map((_, i) => (
+                                    <ProductCardSkeleton key={i} />
+                                ))
+                                : productData.map((product) => (
+                                    <ProductCard
+                                        key={product.id}
+                                        product={product}
+                                        version="v2"
+                                    />
+                                ))
+                            }
                         </div>
 
                     </main>

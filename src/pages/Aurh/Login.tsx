@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export const Login = () => {
   return (
     <div
-      className="h-screen bg-contain w-full flex flex-col  justify-end  lg:flex-row lg:justify-end bg-white "
+      className="min-h-screen w-full flex flex-col  justify-end  lg:flex-row lg:justify-end bg-white "
       style={{
         backgroundImage: `url(${img})`,
         backgroundColor: "#014162C7",
@@ -16,9 +16,9 @@ export const Login = () => {
         backgroundBlendMode: "multiply",
       }}
     >
-      <div className=" w-full py-12 px-6 text-center bg-white shadow-2xl  lg:py-31.5  lg:px-22 lg:w-220.75  md:px-22 lg:rounded-l-4xl lg:text-start  ">
+      <div className=" w-full py-12 px-6  bg-white shadow-2xl  lg:py-31.5  lg:px-22 lg:w-220.75  md:px-22 lg:rounded-l-4xl lg:text-start  ">
         <div className="flex flex-col lg:gap-13.25">
-          <p className="font-semibold lg:text-[32px] sm:text-[16px]">
+          <p className="font-semibold text-center lg:text-[32px] sm:text-[16px]  mb-3">
             Login your account!
           </p>
           <p className="font-semibold lg:text-[16px] lg:block hidden">

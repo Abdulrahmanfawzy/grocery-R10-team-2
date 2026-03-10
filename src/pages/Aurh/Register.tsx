@@ -17,7 +17,7 @@ export const Register = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className=" w-full py-12 px-2 bg-white shadow-2xl  lg:py-31.5  lg:px-10 lg:w-220.75  md:px-22 lg:rounded-l-4xl text-center">
+      <div className=" w-full py-12 px-2 bg-white shadow-2xl  lg:py-18 lg:px-10 lg:w-220.75  md:px-22 lg:rounded-l-4xl text-center">
         <div className="flex flex-col lg:gap-5  ">
           <p className="font-semibold lg:text-[32px] sm:text-[16px]">
             Create your account!
@@ -41,7 +41,7 @@ export const Register = () => {
               <Button className="flex items-center justify-center gap-2  bg-white text-black hover:text-white cursor-pointer">
                 <Facebook className="w-7.25" />
 
-                <span>Sign In with Google</span>
+                <span>Sign In with FaceBook</span>
               </Button>
             </div>
             <span className="font-bold text-[16px]">

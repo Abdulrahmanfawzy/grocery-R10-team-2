@@ -3,7 +3,7 @@ import { ChevronDown, Search } from "lucide-react"
 
 const SearchBar = () => {
   return (
-    <div className="flex items-center rounded-xl  bg-gray-200 w-full max-w-2xl overflow-hidden">
+    <div className="flex items-center rounded-xl bg-gray-200 w-full lg:max-w-xl flex-1 overflow-hidden">
       {/* Dropdown */}
       <div className="hidden md:flex items-center gap-2 px-4 py-3 cursor-pointer">
         <span className="font-medium text-gray-700">All Categories</span>

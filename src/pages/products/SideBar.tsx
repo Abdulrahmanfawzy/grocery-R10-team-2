@@ -1,18 +1,17 @@
 // src/pages/products/SideBar.tsx
-import { categories } from "@/lib/constants/products";
+// import { categories } from "@/lib/constants/products";
 import Filter from "./Filter";
 import CheckboxItem from "./CheckboxItem";
 import type { FilterState } from "@/lib/types/productType";
 import { useState } from "react";
 import { Search } from "lucide-react";
 import PriceSlider from "./PriceSlider";
+import useGetCategories from "@/hooks/useGetCategories";
 
-type Props = {
-    activeCategory: string;
-    setActiveCategory: (category: string) => void;
-};
+const Sidebar = () => {
+    const { data: categories } = useGetCategories();
+    const [activeCategory, setActiveCategory] = useState<string | number>("");
 
-const Sidebar = ({ activeCategory, setActiveCategory }: Props) => {
     const BRANDS = ["Brand A", "Brand B", "Brand C"]
     const PRODUCT_TYPES = ["Fresh", "Organic", "Frozen"];
     const AVAILABILITY = ["In stock", "Out of stock"];
@@ -37,18 +36,13 @@ const Sidebar = ({ activeCategory, setActiveCategory }: Props) => {
             <div className="mb-5">
                 <h3 className="text-sm font-bold text-gray-800 mb-3 tracking-wide uppercase text-xs">Categories</h3>
                 <ul className="space-y-0.5">
-                    {categories.map((cat) => (
+                    {categories?.map((cat) => (
                         <li key={cat.id}>
                             <button
                                 onClick={() => setActiveCategory(cat.id)}
                                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all ${activeCategory === cat.id ? "bg-sky-50 text-sky-700 font-semibold" : "text-gray-600 hover:bg-gray-50 hover:text-gray-800"}`}
                             >
-                                <img
-                                    src={cat.icon}
-                                    alt={cat.label}
-                                    className="w-5 h-5 object-contain"
-                                />
-                                {cat.label}
+                                {cat.name}
                             </button>
                         </li>
                     ))}

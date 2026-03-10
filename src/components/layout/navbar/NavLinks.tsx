@@ -15,7 +15,7 @@ const navLinks : NavLinksProps[] = [
 ]
 const NavLinks = () => {
   return (
-    <div className="flex  items-center space-x-4">
+    <div className="flex items-center gap-4 ">
       {
         navLinks.map((link)=> {
           const Icon = link.icon ;

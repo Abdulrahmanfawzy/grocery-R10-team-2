@@ -1,16 +1,35 @@
 export type RegisterProps = {
-  usename: string;
+  username: string;
   email: string;
   password: string;
   phone: string;
+  agree_terms: number;
+  password_confirmation: string;
 };
 
 export type LoginProps = {
-  email: string;
+  login: string;
   password: string;
 };
 
 export type ResetPasswordProps = {
   password: string;
-  confirmPassword: string;
+  password_confirmation: string;
+};
+
+export type Auth = {
+  currentUser: null | { username: string; email: string; phone: string };
+  token: string | null;
+};
+
+export type ResponseProps = {
+  data: {
+    user: {
+      id: number;
+      username: string;
+      email: string;
+      phone?: string;
+    };
+    token: string;
+  };
 };
