@@ -5,7 +5,7 @@ import {
   CircleCheck,
   ShieldCheck,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -15,8 +15,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { ResetPasswordSchema } from "@/lib/schemas/ResetPasswordSchema";
 import type { ResetPasswordProps } from "@/lib/types/Forms";
+import { useResetPassword } from "@/hooks/useResetPassword";
 
 export const ResendPassword = () => {
+  const location = useLocation();
+  const { mutate, isPending } = useResetPassword();
+  const idenfier = location.state?.identifier ?? "";
+  const otp = location.state?.otp ?? "";
   const {
     register,
     handleSubmit,
@@ -24,12 +29,24 @@ export const ResendPassword = () => {
   } = useForm<ResetPasswordProps>({
     defaultValues: {
       password: "",
-      confirmPassword: "",
+      password_confirmation: "",
     },
     resolver: zodResolver(ResetPasswordSchema),
   });
-  const onSumbit: SubmitHandler<ResetPasswordProps> = () => {
-    setIsOpen(true);
+  const onSumbit: SubmitHandler<ResetPasswordProps> = (data) => {
+    mutate(
+      {
+        identifier: idenfier,
+        otp: otp,
+        password_confirmation: data.password_confirmation,
+        password: data.password,
+      },
+      {
+        onSuccess: () => {
+          setIsOpen(true);
+        },
+      },
+    );
   };
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -61,6 +78,7 @@ export const ResendPassword = () => {
 
                 <Input
                   placeholder="Password"
+                  type="password"
                   className={`w-full h-13 pl-10 ${errors.password ? "border-red-500" : ""}`}
                   {...register("password")}
                 />
@@ -83,13 +101,14 @@ export const ResendPassword = () => {
 
                 <Input
                   placeholder="Confirm Password"
-                  className={`w-full h-13 pl-10 ${errors.confirmPassword ? "border-red-500" : ""}`}
-                  {...register("confirmPassword")}
+                  type="password"
+                  className={`w-full h-13 pl-10 ${errors.password_confirmation ? "border-red-500" : ""}`}
+                  {...register("password_confirmation")}
                 />
               </div>
-              {errors.confirmPassword && (
+              {errors.password_confirmation && (
                 <p className="text-red-500 text-xs mt-1 text-start">
-                  {errors.confirmPassword.message}
+                  {errors.password_confirmation.message}
                 </p>
               )}
             </Field>
@@ -113,6 +132,7 @@ export const ResendPassword = () => {
           <Button
             className="w-80.25 h-13.5 mt-4 cursor-pointer"
             onClick={handleSubmit(onSumbit)}
+            disabled={isPending}
           >
             Done
           </Button>
