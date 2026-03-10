@@ -10,14 +10,17 @@ import { CheckCircle2 } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const PopUP = ({ isOpen, setIsOpen }: PopUpProps) => {
+export const PopUP = ({ isOpen, setIsOpen, email, phone }: PopUpProps) => {
   const navigate = useNavigate();
+  const identifier = email || phone || "";
   useEffect(() => {
     if (isOpen) {
       const time = setTimeout(() => {
         setIsOpen(false);
-        navigate("/verification-code");
-      }, 2000);
+        navigate("/verification-code", {
+          state: { identifier: email || phone },
+        });
+      }, 3000);
       return () => clearTimeout(time);
     }
   }, [isOpen, navigate, setIsOpen]);
@@ -29,8 +32,8 @@ export const PopUP = ({ isOpen, setIsOpen }: PopUpProps) => {
             <CheckCircle2 className=" text-green-500" />
           </div>
           <DialogDescription className="text-center">
-            We have sent password recovery instructions Via SMS to “(+20)
-            1163982057”
+            If <span className="font-semibold">{identifier}</span> is
+            registered, you will receive a recovery code shortly.
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
