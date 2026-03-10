@@ -11,8 +11,10 @@ const PhoneSchema = z.object({
   phone: z
     .string()
     .min(1, { message: "Phone is required" })
-    .regex(/^[0-9]+$/, { message: "Phone must contain only numbers" })
-    .min(11, { message: "Phone must be at least 11 digits" }),
+    .regex(/^\+\d{7,15}$/, {
+      message:
+        "Please enter a valid phone number with country code (e.g., +1234567890)",
+    })
 });
 
 type Phonetype = z.infer<typeof PhoneSchema>;

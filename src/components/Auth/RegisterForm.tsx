@@ -1,33 +1,56 @@
 import { Field, FieldLabel } from "@/components/ui/field";
 import { LockKeyhole, Mail, Phone, UserRound } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { type RegisterProps } from "@/lib/types/Forms";
 import { signUpSchema } from "@/lib/schemas/registerSchema";
+
+import axios from "axios";
+import { usePostUser } from "@/hooks/usePostUser";
 export const RegisterForm = () => {
-  const navigate = useNavigate();
   const fieldInputClass =
     "flex items-center justify-center gap-[12px] px-[12px]";
+  const { mutate, isPending } = usePostUser();
+
   const {
     register,
     handleSubmit,
+    setValue,
+    setError,
     formState: { errors },
   } = useForm<RegisterProps>({
     defaultValues: {
-      usename: "",
+      username: "",
       email: "",
       password: "",
       phone: "",
+      password_confirmation: "",
+      agree_terms: 0,
     },
+
     resolver: zodResolver(signUpSchema),
   });
+
+  //Sumbit Function
   const onSumbit: SubmitHandler<RegisterProps> = (data) => {
-    console.log(data);
-    navigate("/Login");
+    mutate(data, {
+      onError: (error) => {
+        if (axios.isAxiosError(error)) {
+          const Error = error.response?.data?.errors;
+          if (Error.email) {
+            setError("email", { message: Error.email[0] });
+          }
+          if (Error.username) {
+            setError("username", { message: Error.username[0] });
+          }
+          if (Error.phone) {
+            setError("phone", { message: Error.phone[0] });
+          }
+        }
+      },
+    });
   };
   return (
     <form
@@ -42,11 +65,11 @@ export const RegisterForm = () => {
             <Input
               placeholder="UserName"
               type="text"
-              {...register("usename")}
-              className={`${errors.usename ? "border-red-500" : ""}`}
+              {...register("username")}
+              className={`${errors.username ? "border-red-500" : ""}`}
             />
-            {errors.usename && (
-              <p className="text-red-500 text-xs">{errors.usename.message}</p>
+            {errors.username && (
+              <p className="text-red-500 text-xs">{errors.username.message}</p>
             )}
           </div>
         </div>
@@ -58,7 +81,6 @@ export const RegisterForm = () => {
             <Input
               placeholder="Email"
               {...register("email")}
-              name="email"
               className={`${errors.email ? "border-red-500 " : ""}`}
             />
             {errors.email && (
@@ -73,10 +95,9 @@ export const RegisterForm = () => {
 
           <div className="flex flex-col flex-1 gap-1">
             <Input
+              type="tel"
               placeholder="Phone"
-              type="number"
               {...register("phone")}
-              name="phone"
               className={`${errors.phone ? "border-red-500 " : ""}`}
             />
             {errors.phone && (
@@ -93,7 +114,6 @@ export const RegisterForm = () => {
               placeholder="Password"
               type="password"
               {...register("password")}
-              name="password"
               className={`${errors.password ? "border-red-500 " : ""}`}
             />
             {errors.password && (
@@ -102,15 +122,49 @@ export const RegisterForm = () => {
           </div>
         </div>
       </Field>
+      <Field className="text-start">
+        <div className={fieldInputClass}>
+          <LockKeyhole size={20} />
+          <div className="flex flex-col flex-1 gap-1">
+            <Input
+              placeholder="Password Confirmation"
+              type="password"
+              {...register("password_confirmation")}
+              name="password_confirmation"
+              className={`${errors.password_confirmation ? "border-red-500 " : ""}`}
+            />
+            {errors.password_confirmation && (
+              <p className="text-red-500 text-xs">
+                {errors.password_confirmation.message}
+              </p>
+            )}
+          </div>
+        </div>
+      </Field>
       {/* SIgn__Gemail */}
       <div className="flex items-center gap-3.25">
-        <Checkbox id="checkox" className="rounded-full" name="checkbox" />
-        <FieldLabel htmlFor={"checkox"}>Remember Me</FieldLabel>
+        <input
+          id="agree_terms"
+          type="checkbox"
+          onChange={(e) =>
+            setValue("agree_terms", e.target.checked ? 1 : 0, {
+              shouldValidate: true,
+            })
+          }
+          className="w-4 h-4 accent-primary cursor-pointer"
+        />
+        <FieldLabel htmlFor={"agree_terms"}> Agree Terms</FieldLabel>
+        {errors.agree_terms && (
+          <p className="text-red-500 text-xs">{errors.agree_terms.message}</p>
+        )}
       </div>{" "}
-      <Button type="submit" className="rounded-none cursor-pointer w-full">
-        Continue
+      <Button
+        type="submit"
+        className="rounded-none cursor-pointer w-full"
+        disabled={isPending}
+      >
+        {isPending ? "Loading..." : "Continue"}
       </Button>
-      {/* Google */}
     </form>
   );
 };

@@ -8,8 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { PhoneSchema, type Phonetype } from "@/lib/schemas/PasswordRecovery";
 import { PopUP } from "@/components/Auth/PopUP";
+import { usePhoneRecovery } from "@/hooks/usePhoneRecovery";
 export const PasswordRecoveryWithPhone = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [phone, setphone] = useState("");
+  const { mutate, isPending } = usePhoneRecovery();
 
   const {
     register,
@@ -21,8 +24,13 @@ export const PasswordRecoveryWithPhone = () => {
     },
     resolver: zodResolver(PhoneSchema),
   });
-  const onSumbit: SubmitHandler<Phonetype> = () => {
-    setIsOpen(true);
+  const onSumbit: SubmitHandler<Phonetype> = (data) => {
+    mutate(data, {
+      onSuccess: () => {
+        setphone(data.phone);
+        setIsOpen(true);
+      },
+    });
   };
 
   return (
@@ -50,7 +58,7 @@ export const PasswordRecoveryWithPhone = () => {
               <Phone size={20} />
             </div>
             <Input
-              type="number"
+              type="tel"
               placeholder="Phone Number"
               className={`bg-gray-400 w-full h-13 pl-10 ${errors.phone ? "border-red-500" : ""}`}
               {...register("phone")}
@@ -72,11 +80,12 @@ export const PasswordRecoveryWithPhone = () => {
           <Button
             className="w-80.25 h-13.5 mt-12.5 cursor-pointer"
             onClick={handleSubmit(onSumbit)}
+            disabled={isPending}
           >
             Verify
           </Button>
 
-          <PopUP isOpen={isOpen} setIsOpen={setIsOpen} />
+          <PopUP isOpen={isOpen} setIsOpen={setIsOpen} phone={phone} />
         </div>
       </div>
     </div>

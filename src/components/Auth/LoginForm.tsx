@@ -3,26 +3,38 @@ import { LockKeyhole, Mail } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import type { LoginProps } from "@/lib/types/Forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/lib/schemas/LoginSchma";
+import { usePostLogin } from "@/hooks/usePostLogin";
+import axios from "axios";
 export const LoginForm = () => {
-  const navigate = useNavigate();
+  const { mutate, isPending } = usePostLogin();
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<LoginProps>({
     defaultValues: {
-      email: "",
+      login: "",
       password: "",
     },
     resolver: zodResolver(LoginSchema),
   });
-  const onSumbit: SubmitHandler<LoginProps> = () => {
-    navigate("/");
+  const onSumbit: SubmitHandler<LoginProps> = (data) => {
+    mutate(data, {
+      onError: (error) => {
+        if (axios.isAxiosError(error)) {
+          const Error = error.response?.data?.errors;
+          if (Error.login) {
+            setError("login", { message: Error.login[0] });
+          }
+        }
+      },
+    });
   };
   const fieldInputClass =
     "flex items-center justify-center gap-[12px] lg:px-[12px] px-0";
@@ -37,13 +49,13 @@ export const LoginForm = () => {
           <Mail size={20} />
           <div className="flex flex-col flex-1 gap-1">
             <Input
-              placeholder="UserName"
+              placeholder="email"
               type="email"
-              {...register("email")}
-              className={`${errors.email ? "border-red-500" : ""}`}
+              {...register("login")}
+              className={`${errors.login ? "border-red-500" : ""}`}
             />
-            {errors.email && (
-              <p className="text-red-500 text-xs">{errors.email.message}</p>
+            {errors.login && (
+              <p className="text-red-500 text-xs">{errors.login.message}</p>
             )}
           </div>
         </div>
@@ -54,10 +66,10 @@ export const LoginForm = () => {
           <LockKeyhole size={20} />
           <div className="flex flex-col flex-1 gap-1">
             <Input
-              placeholder="UserName"
+              placeholder="password"
               type="password"
               {...register("password")}
-              className={`${errors.email ? "border-red-500" : ""}`}
+              className={`${errors.password ? "border-red-500" : ""}`}
             />
             {errors.password && (
               <p className="text-red-500 text-xs">{errors.password.message}</p>
@@ -71,8 +83,12 @@ export const LoginForm = () => {
           Forget Password ?
         </Link>
       </div>
-      <Button type="submit" className="rounded-none cursor-pointer">
-        Continue
+      <Button
+        type="submit"
+        className="rounded-none cursor-pointer"
+        disabled={isPending}
+      >
+        {isPending ? "Loading..." : "Continue"}
       </Button>
     </form>
   );
