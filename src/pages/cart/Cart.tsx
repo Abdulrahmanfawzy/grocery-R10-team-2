@@ -1,11 +1,6 @@
 import CartItem from "../../components/common/CartItem";
-<<<<<<< HEAD
-import CarouselData from "../../components/common/CarouselData";
-import imgProduct from "../../assets/img/ProductImage.png";
-// import { useForm,SubmitHandler} from "react-hook-form"
-// import type {cartInputs} from "../../lib/types/cartTypes";
-=======
 
+import imgProduct from "../../assets/img/ProductImage.png";
 import {
   Carousel,
   CarouselContent,
@@ -13,16 +8,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
->>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
 import { Link } from "react-router-dom";
 import type { cartItem } from "@/lib/types/cartTypes";
-const title:string = "Exlore More"
+import ProductCartEslam from "@/components/common/ProductCartEslam";
+const title: string = "Exlore More"
 
 export default function Cart() {
-// const {register} = useForm<cartInputs>()
-// const onSubmit:SubmitHandler<cartInputs> = (data)=>{
-// console.log(data);
-// }
+  // const {register} = useForm<cartInputs>()
+  // const onSubmit:SubmitHandler<cartInputs> = (data)=>{
+  // console.log(data);
+  // }
 
 
   const cartProducts: cartItem[] = [
@@ -32,7 +27,7 @@ export default function Cart() {
       img: imgProduct,
       price: 100,
       quantity: 2,
-      inStock:"in Stock"
+      inStock: "in Stock"
     },
     {
       id: 2,
@@ -40,7 +35,7 @@ export default function Cart() {
       img: imgProduct,
       price: 80,
       quantity: 1,
-      inStock:"in Stock"
+      inStock: "in Stock"
     },
     {
       id: 3,
@@ -48,7 +43,7 @@ export default function Cart() {
       img: imgProduct,
       price: 60,
       quantity: 3,
-      inStock:"in Stock"
+      inStock: "in Stock"
     },
     {
       id: 4,
@@ -56,7 +51,7 @@ export default function Cart() {
       img: imgProduct,
       price: 120,
       quantity: 1,
-      inStock:"in Stock"
+      inStock: "in Stock"
     },
     {
       id: 5,
@@ -64,7 +59,7 @@ export default function Cart() {
       img: imgProduct,
       price: 150,
       quantity: 0,
-      inStock:"in Stock"
+      inStock: "in Stock"
     },
     {
       id: 6,
@@ -72,27 +67,19 @@ export default function Cart() {
       img: imgProduct,
       price: 90,
       quantity: 4,
-      inStock:"in Stock"
+      inStock: "in Stock"
     },
   ];
   return (
     <>
       <div className="bg-white p-6  w-full md:w-10/12 lg:w-9/12 mx-auto">
         <h3 className="my-6 text-2xl">Products In Cart</h3>
-<<<<<<< HEAD
-        <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 px-3">
-          <div className="grid grid-cols-1 lg:grid-cols-2 divide-">
-            {cartProducts.map((product) => {
-              return <CartItem productInfo={product} key={product.id}></CartItem>;
-            })}
-=======
         <div className=" rounded-lg border max-h-125 bg-white overflow-auto py-4 ">
           <div className="grid grid-cols-1 lg:grid-cols-2 divide-x">
             <CartItem />
             <CartItem />
             <CartItem />
             <CartItem />
->>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
           </div>
         </div>
 
@@ -121,14 +108,8 @@ export default function Cart() {
               </div>
 
               <Link
-<<<<<<< HEAD
-                to="/shipping"
-                className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition"
-              >
-=======
                 to="/checkout"
                 className="w-full mt-6 inline-block px-5 bg-[#0F3D53] text-white py-3 rounded-md hover:opacity-90 transition">
->>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
                 Go To Checkout
               </Link>
             </div>
@@ -150,7 +131,7 @@ export default function Cart() {
                     type="text"
                     placeholder="Your Coupon Code ........."
                     className="flex-1 border rounded-md px-3 py-2 bg-gray-50 text-sm outline-none"
-                    
+
                   />
                   <button className="bg-gray-300 px-4 py-3 rounded-md text-sm cursor-pointer">
                     Apply Code
@@ -168,7 +149,7 @@ export default function Cart() {
                     type="text"
                     placeholder="Your Address ......."
                     className="flex-1 border rounded-md px-3 py-2 bg-gray-50 text-sm outline-none"
-                    // {...register("address")}
+                  // {...register("address")}
                   />
                   <button className="bg-gray-300 px-4 py-3 cursor-pointer rounded-md text-sm">
                     Edit
@@ -180,9 +161,6 @@ export default function Cart() {
         </div>
       </div>
 
-<<<<<<< HEAD
-<CarouselData heading={title}></CarouselData>
-=======
       <Carousel className="w-full sm:max-w-xs md:max-w-9/12 mt-12 mx-auto">
         <CarouselContent>
           <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
@@ -202,7 +180,6 @@ export default function Cart() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
->>>>>>> 5950582a65e75601f0acf0925e74e2c2cb2cc546
     </>
   );
 }
