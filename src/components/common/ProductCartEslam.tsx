@@ -17,23 +17,20 @@ export default function ProductCartEslam() {
                     className="h-full w-full object-contain"
                 />
             </div>
-            <div className="text mt-2 flex justify-between items-center gap-4 w-full">
+            <div className="text mt-2 flex justify-between items-center gap-2 w-full">
                 <h3 className=" font-medium text-gray-800">
                     Premium Organic Orange - 1KG
                 </h3>
                 <div className="flex items-center gap-3">
-                    <span className="font-semibold text-gray-900 m-0">20 $</span>
-                    <span className="text-gray-400 line-through m-0">30 $</span>
+                    <span className="font-semibold text-gray-900 m-0">20$</span>
+                    <span className="text-gray-400 line-through m-0">30$</span>
                 </div>
             </div>
             <div className="rating">
                 {/* <Rating rating={4} /> <span>(3.8 / 5)</span> */}
             </div>
             <div className="flex items-center gap-2 mt-4">
-                <button className=" w-50 bg-[#0F3D53] text-white py-2 px-3 rounded-xl hover:opacity-90 transition">
-                    Add To Cart
-                </button>
-                <div className="flex items-center border rounded-md gap-2 w-50 justify-between px-2 py-1">
+                  <div className="flex items-center border rounded-md gap-2 w-50 justify-between px-2 py-1">
                     <span className="text-blue-600 font-semibold text-2xl cursor-pointer">
                         -
                     </span>
@@ -42,6 +39,10 @@ export default function ProductCartEslam() {
                         +
                     </span>
                 </div>
+                <button className=" w-50 bg-[#0F3D53] text-white py-2 px-3 rounded-xl hover:opacity-90 transition">
+                    Add To Cart
+                </button>
+            
             </div>
         </div>
     );

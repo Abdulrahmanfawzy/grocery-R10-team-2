@@ -1,0 +1,53 @@
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import ProductNaturalFats from "./ProductNaturalFats";
+import ProductDescription from "./productDescription";
+import ProductReview from "./productReveiw";
+
+export default function productTabs() {
+  const [tab, setTab] = useState<string>("description");
+  function changeTab(tab: string) {
+    switch (tab) {
+      case "NaturalFats":
+        return <ProductNaturalFats></ProductNaturalFats>;
+      case "description":
+        return <ProductDescription></ProductDescription>;
+      case "review":
+        return <ProductReview></ProductReview>;
+      default:
+        return null;
+    }
+  }
+
+  return (
+    <>
+      <div className="flex items-center gap-1 py-2">
+        <Button
+          className={`cursor-pointer ${tab == "description" ? "bg-primary" : "bg-gray-200 text-primary hover:text-white"}`}
+          onClick={() => {
+            setTab("description");
+          }}
+        >
+          Description
+        </Button>
+        <Button
+          className={`cursor-pointer ${tab == "review" ? "bg-primary" : "bg-gray-200 text-primary hover:text-white"}`}
+          onClick={() => {
+            setTab("review");
+          }}
+        >
+          Reveiw
+        </Button>
+        <Button
+          className={`cursor-pointer ${tab == "NaturalFats" ? "bg-primary" : "bg-gray-200 text-primary hover:text-white"}`}
+          onClick={() => {
+            setTab("NaturalFats");
+          }}
+        >
+          Natural Fats
+        </Button>
+      </div>
+      <div className="">{changeTab(tab)}</div>
+    </>
+  );
+}

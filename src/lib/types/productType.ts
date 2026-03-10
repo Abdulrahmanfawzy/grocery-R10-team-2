@@ -9,12 +9,23 @@ export interface Product {
     reviewCount: number;
     category?: Exclude<Category, "All">;
     image: string;
+    oldPrice?: number;
     badges: string[];
     emoji: string;
-    by?: string
+    by?: string;
     variant?: string
-    title?: string
 }
+
+
 export type ProductCardProps = {
     product: Product;
 };
+
+
+export interface FilterState {
+    brands: string[];
+    productTypes: string[];
+    availability: string[];
+    priceRange: [number, number];
+    search: string;
+}
