@@ -1,12 +1,11 @@
-
+// src/components/common/ProductCard.tsx
 import { Card } from "@/components/ui/card";
 import Image from "../../assets/Home/Rectangle19.png";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import Rating from "./Rating";
-import type { Product } from "@/lib/types/productType";
 import { useState } from "react";
-
+import type { Product } from "@/lib/types/productType";
 type Props = {
   product: Product,
   version?: "v1" | "v2";
@@ -21,12 +20,12 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
   };
 
   return (
-    <Card className="relative cursor-pointer hover:shadow-lg transition-shadow border duration-300 p-4 overflow-hidden">
+    <Card className="relative hover:shadow-lg transition-shadow border duration-300 p-4 overflow-hidden">
       {/* line overlay */}
       <div className="absolute w-2 h-2/4 bg-white bottom-2 -right-2 rounded-full"></div>
       {/* Card Content */}
       {/* Badges */}
-      <div
+      {/* <div
         className={`${product.variant === "sale" ? "absolute -top-1 left-0" : "space-x-1 ml-2"}`}
       >
         {product.variant === "sale"
@@ -48,26 +47,27 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
               {badge}
             </span>
           ))}
-      </div>
+      </div> */}
 
       {/* Image */}
       <img
-        src={Image}
-        alt="imageProduct"
+        loading="lazy"
+        src={product.image_url || Image}
+        alt={product.title}
         className="w-full h-40 object-contain"
       />
 
       {/* Product Details */}
       <div>
-        <p className="text-sm text-gray-400">{product.category}</p>
-        <h3 className="text-lg font-semibold">{product.name}</h3>
+        <p className="text-sm text-gray-400">{product.category.name}</p>
+        <h3 className="text-lg font-semibold">{product.title}</h3>
       </div>
 
       {/* Rating */}
       <div>
         <Rating rating={product.rating} />
         <span className="text-sm font-normal text-gray-300">
-          By : <span className="text-primary">{product.by}</span>
+          {/* By : <span className="text-primary">{product.by}</span> */}
         </span>
       </div>
 
@@ -76,21 +76,21 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
         <div className="flex items-center justify-between gap-2">
           <div className="space-x-2">
             <span className="text-primary font-bold text-lg">
-              £{product.price}
+              £{product.final_price}
             </span>
 
-            {product.oldPrice && (
+            {product.price && (
               <span className="line-through text-gray-400">
-                £{product.oldPrice}
+                £{product.price}
               </span>
             )}
           </div>
 
-          <div className={`${product.variant === "sale" ? "hidden" : "block"}`}>
-            <Button variant="default" className="px-6 cursor-pointer">
-              <ShoppingCart size={20} /> Add
-            </Button>
-          </div>
+          {/* <div className={`${product.variant === "sale" ? "hidden" : "block"}`}> */}
+          <Button variant="default" className="px-6 cursor-pointer">
+            <ShoppingCart size={20} /> Add
+          </Button>
+          {/* </div> */}
         </div>
       )}
 
@@ -100,12 +100,12 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
           {/* price */}
           <div className="space-x-2">
             <span className="text-primary font-bold text-lg">
-              £{product.price}
+              £{product.final_price}
             </span>
 
-            {product.oldPrice && (
+            {product.price && (
               <span className="line-through text-gray-400">
-                £{product.oldPrice}
+                £{product.price}
               </span>
             )}
           </div>
@@ -132,7 +132,7 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
               </button>
             </div>
 
-            <Button className="flex-1">
+            <Button className="flex-1 cursor-pointer">
               <ShoppingCart size={18} /> Add
             </Button>
 
