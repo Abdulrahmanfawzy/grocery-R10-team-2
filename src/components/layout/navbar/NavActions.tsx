@@ -10,7 +10,7 @@ const NavActions = () => {
   }
   
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 shrink-0">
       {/* cart */}
         <Link to='cart' >
       <div className="flex relative items-center gap-2 cursor-pointer">
