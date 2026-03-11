@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 export default function productDescription() {
   const {id} = useParams()
 
-const { data, isLoading, isError } = useProductDetails(id!)
+const { data, isLoading } = useProductDetails(id!)
 if (isLoading) {
   return <Loading></Loading>
 }

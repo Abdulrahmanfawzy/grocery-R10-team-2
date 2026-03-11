@@ -1,11 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import ProductNaturalFats from "./ProductNaturalFats";
+// import ProductNaturalFats from "./ProductNaturalFats";
 import ProductDescription from "./ProductDescription";
 import ProductReview from "./ProductReveiw";
+import { useParams } from "react-router-dom";
+import { useProductDetails } from "@/lib/api/productDetails";
+import Loading from "@/components/common/Loading";
+import ErrorMessage from "@/components/common/ErrorMessage";
 
 export default function productTabs() {
   const [tab, setTab] = useState<string>("description");
+  const {id} = useParams()
+  const {isError,isLoading,error} =  useProductDetails(id!)
+
+  if (isLoading) {
+    return<Loading></Loading>
+  }
+  if (isError) {
+    return <ErrorMessage message={error.message}></ErrorMessage>
+  }
   function changeTab(tab: string) {
     switch (tab) {
       // case "NaturalFats":
