@@ -1,12 +1,16 @@
 import Rating from "@/components/common/Rating";
-import vector from "../../../assets/img/ProductImage.png";
 import { useParams } from "react-router-dom";
 import { useProductDetails } from "@/lib/api/productDetails";
+import Loading from "@/components/common/Loading";
 // Types 
 export default function productReveiw() {
   const {id} = useParams()
 
 const { data, isLoading, isError } = useProductDetails(id!)
+if (isLoading) {
+  return <Loading></Loading>
+}
+
 
 if (!data) {
   return null

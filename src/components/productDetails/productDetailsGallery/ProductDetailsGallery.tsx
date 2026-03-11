@@ -12,6 +12,8 @@ export default function ProductDetailsGallery({product}:productDetailsProps) {
 // console.log(product);
 
 
+
+
 const images: GalleryItem[] = [
   {
     original: product!.image_url,

@@ -8,6 +8,9 @@ import { FaRegHeart } from "react-icons/fa";
 import { useProductDetails } from "@/lib/api/productDetails";
 import { useParams } from "react-router-dom";
 import Rating from "@/components/common/Rating";
+import { is } from "zod/v4/locales";
+import Loading from "@/components/common/Loading";
+import ErrorMessage from "@/components/common/ErrorMessage";
 // import { string } from "zod";
 
 
@@ -18,10 +21,19 @@ export default function ProductDetailsInfo() {
 
 const {id} = useParams()
 
-const { data, isLoading, isError } = useProductDetails(id!)
+const { data, isLoading, isError,error } = useProductDetails(id!)
+if (isLoading) {
+  return <Loading></Loading>
+}
+
+if (isError) {
+  
+  return <ErrorMessage message={error.message}></ErrorMessage>
+  
+}
+
 
 if(!data) return null
-
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 py-8 my-4 gap-12">

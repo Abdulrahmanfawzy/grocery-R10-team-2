@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { calculateDiscount } from "@/lib/utils/calculateDiscount";
 import Rating from "./Rating";
 export default function ProductCartEslam({product}:productDetailsProps) {
-    console.log(product);
    return (
         <div className="bg-white rounded-2xl border p-4 hover:shadow-lg transition duration-300">
             <div className="relative aspect-square bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">

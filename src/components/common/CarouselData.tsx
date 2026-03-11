@@ -8,14 +8,20 @@ import {
 } from "../ui/carousel";
 import ProductCartEslam from "./ProductCartEslam";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 type carouselProps = {
   heading: string;
 };
 export default function CarouselData({ heading }: carouselProps) {
-  const { data, isLoading, isError } = useProducts();
-  console.log(data);
-
+  const { data, isLoading, isError,error } = useProducts();
+  if (isLoading) {
+    return <Loading></Loading>
+  }
+  if (isError) {
+    return <ErrorMessage message={error.message}></ErrorMessage>
+  }
   return (
     <>
       <div className="w-[80%] mx-auto mt-12">
