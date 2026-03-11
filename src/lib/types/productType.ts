@@ -1,5 +1,4 @@
-// export type Category = "All" | "Fruits" | "Vegetables" | "Bakery";
-
+//productType.ts
 export interface CategoryApiItem {
     id: number | string;
     name: string;
@@ -45,6 +44,21 @@ export interface Product {
     created_at: string;
 }
 
+export type Brand = string;
+
+export interface ProductFilters {
+    search?: string;
+    category_id?: number | string;
+    in_stock?: number;
+    min_price?: number;
+    max_price?: number;
+    brand?: string[];
+}
+
+export interface SidebarProps {
+    filters: ProductFilters;
+    setFilters: React.Dispatch<React.SetStateAction<ProductFilters>>;
+}
 
 export type ProductCardProps = {
     product: Product;

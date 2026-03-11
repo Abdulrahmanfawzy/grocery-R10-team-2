@@ -1,12 +1,13 @@
 // src/hooks/useGetProducts.ts
 import { fetchProducts } from "@/lib/api/products";
-import type { Product } from "@/lib/types/productType";
+import type { Product, ProductFilters } from "@/lib/types/productType";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 
-const useGetProducts = (): UseQueryResult<Product[]> => {
+const useGetProducts = (filters: ProductFilters): UseQueryResult<Product[]> => {
     const query = useQuery({
-        queryKey: ["products"],
-        queryFn: fetchProducts,
+        queryKey: ["products", filters],
+        queryFn: () => fetchProducts(filters),
+
         staleTime: 1000 * 60, // 1 minute
     });
     return query;

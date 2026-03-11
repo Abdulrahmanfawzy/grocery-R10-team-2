@@ -6,13 +6,21 @@ import ProductCard from "@/components/common/ProductCard";
 import { useState } from "react";
 import FeaturesSection from "@/components/featuresSection/FeaturesSection";
 import { SlidersHorizontal } from "lucide-react";
-import useGetProducts from "@/hooks/useGetProducts";
 import ProductCardSkeleton from "@/components/common/ProductCardSkeleton";
+import useGetProducts from "@/hooks/useGetProducts";
+import type { ProductFilters } from "@/lib/types/productType";
 
 const ProductList = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-
-    const { data: productData = [], isLoading } = useGetProducts();
+    const [filters, setFilters] = useState<ProductFilters>({
+        search: "",
+        category_id: "",
+        in_stock: undefined,
+        min_price: 0,
+        max_price: 200,
+        brand: [],
+    });
+    const { data: productData = [], isLoading } = useGetProducts(filters);
 
     return (
         <>
@@ -71,8 +79,8 @@ const ProductList = () => {
                         </div>
 
                         <Sidebar
-                        // setActiveCategory={setActiveCategory}
-                        // activeCategory={activeCategory}
+                            filters={filters}
+                            setFilters={setFilters}
                         />
                     </aside>
 
