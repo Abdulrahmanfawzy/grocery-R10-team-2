@@ -9,8 +9,22 @@ import {
   RotateCcw,
   Truck,
 } from "lucide-react";
+import type {
+  FieldErrors,
+  UseFormRegister,
+  UseFormSetValue,
+  UseFormWatch,
+} from "react-hook-form";
+import type { ShippingFormData } from "@/lib/schemas/shippingSchema";
 
-function Delivery() {
+interface Props {
+  register: UseFormRegister<ShippingFormData>;
+  errors: FieldErrors<ShippingFormData>;
+  watch: UseFormWatch<ShippingFormData>;
+  setValue: UseFormSetValue<ShippingFormData>;
+}
+
+function Delivery({ register, errors, watch, setValue }: Props) {
   return (
     <div>
       <h2 className="text-base font-semibold text-gray-800 mb-4">
@@ -24,6 +38,12 @@ function Delivery() {
           iconTwo={Car}
           delivery={"Delivery"}
           pickUp={"Pick-Up"}
+          optionOne="delivery"
+          optionTwo="pickup"
+          value={watch("deliveryMethod")}
+          onChange={(val) =>
+            setValue("deliveryMethod", val as "delivery" | "pickup")
+          }
         />
 
         <div>
@@ -33,13 +53,44 @@ function Delivery() {
               id="address"
               type="text"
               placeholder="Villa 14, Street 23, District 5, New Cairo, Cairo 11835"
+              {...register("address")}
             />
+            {errors.address && (
+              <p className="text-red-500 text-sm">{errors.address.message}</p>
+            )}
           </div>
 
           <div className="mt-4.75 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <Input type="text" placeholder="City" />
-            <Input type="text" placeholder="Provenance" />
-            <Input type="text" placeholder="Postal Code" />
+            <div>
+              <Input type="text" placeholder="City" {...register("city")} />
+              {errors.city && (
+                <p className="text-red-500 text-sm">{errors.city.message}</p>
+              )}
+            </div>
+            <div>
+              <Input
+                type="text"
+                placeholder="Province"
+                {...register("province")}
+              />
+              {errors.province && (
+                <p className="text-red-500 text-sm">
+                  {errors.province.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <Input
+                type="text"
+                placeholder="Postal Code"
+                {...register("postalCode")}
+              />
+              {errors.postalCode && (
+                <p className="text-red-500 text-sm">
+                  {errors.postalCode.message}
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
@@ -49,6 +100,12 @@ function Delivery() {
           iconTwo={Clock}
           delivery={"Deliver Now"}
           pickUp={"Deliver Later"}
+          optionOne={"now"}
+          optionTwo={"later"}
+          value={watch("scheduleDelivery")}
+          onChange={(val) =>
+            setValue("scheduleDelivery", val as "now" | "later")
+          }
         />
 
         <ShippingBadge
@@ -57,6 +114,12 @@ function Delivery() {
           iconTwo={ClockFading}
           delivery={"Standard"}
           pickUp={"Priority"}
+          optionOne="standard"
+          optionTwo="priority"
+          value={watch("deliverySpeed")}
+          onChange={(val) =>
+            setValue("deliverySpeed", val as "standard" | "priority")
+          }
         />
 
         <div className="space-y-1.5 mt-6">
@@ -66,6 +129,7 @@ function Delivery() {
             type="text"
             placeholder="45 Min, 30/1/25 at 2:30 PM"
             className="w-full md:w-[75%] lg:w-[50%]"
+            {...register("estimatedArrival")}
           />
         </div>
       </div>

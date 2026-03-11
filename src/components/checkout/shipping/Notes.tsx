@@ -1,6 +1,12 @@
 import { Input } from "@/components/ui/input";
+import type { UseFormRegister } from "react-hook-form";
+import type { ShippingFormData } from "@/lib/schemas/shippingSchema";
 
-function Notes() {
+interface Props {
+  register: UseFormRegister<ShippingFormData>;
+}
+
+function Notes({ register }: Props) {
   return (
     <div className="my-14">
       <h2 className="text-base font-semibold text-gray-800 mb-4">
@@ -13,16 +19,28 @@ function Notes() {
             type="text"
             placeholder="Leave order infront of the door"
             className="py-2"
+            {...register("noteOne")}
           />
-          <Input type="text" placeholder="Don't Ring Bell" className="py-2" />
+          <Input
+            type="text"
+            placeholder="Don't Ring Bell"
+            className="py-2"
+            {...register("noteTwo")}
+          />
           <Input
             type="text"
             placeholder="Call 30 minutes in advance"
             className="py-2"
+            {...register("noteThree")}
           />
         </div>
 
-        <Input type="text" placeholder="Input Text..." className="py-2 mt-6" />
+        <Input
+          type="text"
+          placeholder="Input Text..."
+          className="py-2 mt-6"
+          {...register("noteFour")}
+        />
       </div>
     </div>
   );
