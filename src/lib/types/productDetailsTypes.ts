@@ -1,17 +1,31 @@
+import ProductCartEslam from "@/components/common/ProductCartEslam"
 import type { GalleryItem } from "react-image-gallery"
 
 export type productData = {
-  id:number,
-  title:string,
-  price:number,
-  quantity:number,
-  inStock:boolean,
-  images:string[]
-  rating?:number
-  description?:string
-  naturalFats?:string
+  id: number
+  title: string
+  description: string
+  price: number
+  discount_price: number
+  final_price: number
+  image_url: string
+  rating: number
+  rating_count: number
+  brand: string
+  size: string
+  in_stock: boolean
+  stock_quantity: number
+  category: {
+  id: number
+  name: string
+  slug: string
+}
 }
 
-export type galleryProps = {
-  images:GalleryItem[]
+export type productDetailsProps ={
+  product:productData
 }
+
+// export type galleryProps = {
+//   images:GalleryItem[]
+// }

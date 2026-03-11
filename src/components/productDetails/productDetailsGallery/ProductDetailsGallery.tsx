@@ -1,26 +1,31 @@
 import { useRef } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/image-gallery.css";
-import type {ImageGalleryRef } from "react-image-gallery";
-import type {galleryProps} from "../../lib/types/productDetailsTypes"
-
-// const images: GalleryItem[] = [
-//   {
-//     original: imgProduct,
-//     thumbnail: imgProduct,
-//   },
-//   {
-//     original: imgProduct,
-//     thumbnail: imgProduct
-//   },
-//   {
-//     original: imgProduct,
-//     thumbnail: imgProduct,
-//   },
-// ];
+import type {GalleryItem, ImageGalleryRef } from "react-image-gallery";
+// import type { productData } from "@/lib/types/productDetailsTypes";
+import type {productDetailsProps} from "../../../lib/types/productDetailsTypes"
 
 
-export default function ProductDetailsGallery({images}:galleryProps) {
+export default function ProductDetailsGallery({product}:productDetailsProps) {
+  // const {id} = useParams()
+  // const { data, isLoading, isError } = useProductDetails(id!)
+// console.log(product);
+
+
+const images: GalleryItem[] = [
+  {
+    original: product!.image_url,
+    thumbnail: product!.image_url,
+  },
+  {
+    original: product!.image_url,
+    thumbnail: product!.image_url
+  },
+  {
+    original: product!.image_url,
+    thumbnail: product!.image_url,
+  },
+];
 
       const galleryRef = useRef<ImageGalleryRef>(null);
   return <>

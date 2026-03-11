@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ProductNaturalFats from "./ProductNaturalFats";
-import ProductDescription from "./productDescription";
-import ProductReview from "./productReveiw";
+import ProductDescription from "./ProductDescription";
+import ProductReview from "./ProductReveiw";
 
 export default function productTabs() {
   const [tab, setTab] = useState<string>("description");
   function changeTab(tab: string) {
     switch (tab) {
-      case "NaturalFats":
-        return <ProductNaturalFats></ProductNaturalFats>;
+      // case "NaturalFats":
+      //   return <ProductNaturalFats></ProductNaturalFats>;
       case "description":
         return <ProductDescription></ProductDescription>;
       case "review":
@@ -38,14 +38,14 @@ export default function productTabs() {
         >
           Reveiw
         </Button>
-        <Button
+        {/* <Button
           className={`cursor-pointer ${tab == "NaturalFats" ? "bg-primary" : "bg-gray-200 text-primary hover:text-white"}`}
           onClick={() => {
             setTab("NaturalFats");
           }}
         >
           Natural Fats
-        </Button>
+        </Button> */}
       </div>
       <div className="">{changeTab(tab)}</div>
     </>

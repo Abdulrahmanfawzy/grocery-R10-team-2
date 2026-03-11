@@ -2,7 +2,7 @@
 export default function ProductNaturalFats() {
   return (
     <div>
-    Natural Fat Componenet
+    Mo Natural Fat Componenet
     </div>
   )
 }

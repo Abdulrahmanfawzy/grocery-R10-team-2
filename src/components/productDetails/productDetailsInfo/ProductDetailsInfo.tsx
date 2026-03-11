@@ -3,46 +3,55 @@ import { Button } from "../../ui/button";
 import { MdOutlineAccessAlarm } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
-import type { productData } from "@/lib/types/productDetailsTypes";
-import type { GalleryItem } from "react-image-gallery";
+// import type { productData } from "@/lib/types/productDetailsTypes";
+// import type { GalleryItem } from "react-image-gallery";
+import { useProductDetails } from "@/lib/api/productDetails";
+import { useParams } from "react-router-dom";
+import Rating from "@/components/common/Rating";
+// import { string } from "zod";
 
-type productDataProps = {
-  productInfo:productData
-}
-export default function ProductDetailsInfo({productInfo}:productDataProps) {
-     console.log(productInfo);
-const galleryImages:GalleryItem[] = productInfo.images.map((img)=>{
-  return {
-    original:img,
-    thumbnail:img,
-    // originalHeight:"200",
-    // originalWidth:"200"
-  }
-})
 
+// type productDataProps = {
+//   productInfo:productData
+// }
+export default function ProductDetailsInfo() {
+
+const {id} = useParams()
+
+const { data, isLoading, isError } = useProductDetails(id!)
+
+if(!data) return null
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 py-8 my-4 gap-12">
-        <ProductDetailsGallery images={galleryImages}></ProductDetailsGallery>
-        <div className="product-data ">
-          <div className="flex flex-col gap-6 border-b py-6">
+        <ProductDetailsGallery product={data}></ProductDetailsGallery>
+                <div className="product-data ">
+          <div className="flex flex-col gap-3 border-b py-6 mb-2 ">
             <h2 className="text-2xl text-[#014162] font-semibold">
-              Premium organic orange
+              {data?.title}
             </h2>
-            <span className="text-gray-700">25$ | Kg</span>
-            <span className="text-gray-700">20$</span>
+            <p className="text-gray-400">{data.description}</p>
+            <span className="text-gray-700 ">{data?.final_price}</span>
+            <span className="text-gray-700 line-through l">{data.price !== data.final_price?data.price:""}</span>
+            <span className="text-gray-900 l bg-gray-300 px-2 py-1 rounded-md font-medium w-fit text-md hover:bg-gray-100 transition-colors duration-300">{data?.category.name}</span>
+            <span className="text-gray-600 l bg-gray-200 px-2 py-1 rounded-md font-medium w-fit text-md hover:bg-gray-100 transition-colors duration-300">{data?.in_stock?"In Stock":"Out of Stock"}</span>
+            {
+data?.stock_quantity!==0 && <span className="text-gray-600 l bg-gray-200 px-2 py-1 rounded-md font-medium w-fit text-md hover:bg-gray-100 transition-colors duration-300">Quantity is {data.stock_quantity}</span>
+            }
+            
             <Button className="bg-gray-200 font-medium w-fit text-gray-700 text-md hover:bg-gray-100 transition-colors duration-300">
               <MdOutlineAccessAlarm />
               Priority Delivery Available
             </Button>
           </div>
+          {<Rating rating={data.rating}></Rating> } <span className="text-gray-500 my-2 inline-block">{data.rating} / {data.rating_count} Review</span>
           <p className="text-md mt-3 mb-2">Quantity</p>
           <div className="flex items-center border rounded-md px-4 py-1 gap-6 w-fit">
             <span className="text-blue-600 font-semibold text-lg cursor-pointer">
               -
             </span>
-            <span className="text-sm">5</span>
+            <span className="text-sm">{data?.stock_quantity}</span>
             <span className="text-blue-600 font-semibold text-lg cursor-pointer">
               +
             </span>
