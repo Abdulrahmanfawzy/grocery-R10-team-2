@@ -1,21 +1,64 @@
-export type Category = "All" | "Fruits" | "Vegetables" | "Bakery";
+//productType.ts
+export interface CategoryApiItem {
+    id: number | string;
+    name: string;
+    slug: string;
+    description?: string;
+    image_url?: string;
+    meals_count?: number;
+    sort_order?: number;
+    created_at?: string;
+    icon?: string;
+}
+
 
 export interface Product {
     id: number;
-    name: string;
+    title: string;
+    slug: string;
+    description: string;
+    image_url: string | null;
+    offer_title: string | null;
     price: number;
-    originalPrice: number;
+    discount_price: number;
+    final_price: number;
+    has_offer: boolean;
     rating: number;
-    reviewCount: number;
-    category?: Exclude<Category, "All">;
-    image: string;
-    oldPrice?: number;
-    badges: string[];
-    emoji: string;
-    by?: string;
-    variant?: string
+    rating_count: number;
+    size: string;
+    brand: string;
+    stock_quantity: number;
+    in_stock: boolean;
+    is_featured: boolean;
+    sold_count: number;
+    category: {
+        id: number;
+        name: string;
+    };
+    subcategory: {
+        id: number;
+        name: string;
+    } | null;
+    features: string;
+    is_favorited: boolean;
+    created_at: string;
 }
 
+export type Brand = string;
+
+export interface ProductFilters {
+    search?: string;
+    category_id?: number | string;
+    in_stock?: number;
+    min_price?: number;
+    max_price?: number;
+    brand?: string[];
+}
+
+export interface SidebarProps {
+    filters: ProductFilters;
+    setFilters: React.Dispatch<React.SetStateAction<ProductFilters>>;
+}
 
 export type ProductCardProps = {
     product: Product;

@@ -1,5 +1,4 @@
 import { categoryProgress, insightCards } from "@/lib/data/dataDashboard";
-import { PoundSterling } from "lucide-react";
 
 const ShoppingInsights = () => {
   return (

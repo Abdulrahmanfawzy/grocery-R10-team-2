@@ -9,7 +9,6 @@ import {
 import type { IconType } from "react-icons";
 import CardItem from "./CardItem";
 import AuthorizationPopup from "./AuthPopup";
-import PaymentConfirmedPopup from "./ConfirmPopup";
 import AddNewCardPopup from "./AddCardPopup";
 import { getCards, deleteCard } from "@/lib/api/cards";
 import type { SavedCard } from "@/lib/api/cards";
