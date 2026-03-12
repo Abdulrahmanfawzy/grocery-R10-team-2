@@ -38,8 +38,30 @@ function CheckoutProvider() {
       .finally(() => setLoading(false));
   }, []);
 
+  const updateItemQuantity = (id: string, newQuantity: number) => {
+    setItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
+        String(item.id) === id ? { ...item, quantity: newQuantity } : item,
+      );
+      const newSubtotal = parseFloat(
+        updatedItems
+          .reduce((acc, item) => acc + item.price * item.quantity, 0)
+          .toFixed(2),
+      );
+
+      setSummary((prev) => ({
+        ...prev,
+        subtotal: newSubtotal,
+        total: parseFloat((newSubtotal + prev.tax).toFixed(2)),
+      }));
+
+      return updatedItems;
+    });
+  };
+
   return (
-    <CheckoutContext.Provider value={{ currentStep, items, summary, loading }}>
+    <CheckoutContext.Provider
+      value={{ currentStep, items, summary, loading, updateItemQuantity }}>
       <Outlet />
     </CheckoutContext.Provider>
   );
