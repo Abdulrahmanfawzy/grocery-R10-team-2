@@ -1,5 +1,6 @@
 //route.tsx
 import { ProtectesRoute } from "@/components/Auth/ProtectedRoutes/ProtectesRoute";
+import ErrorPage from "@/components/common/ErrorPage";
 import Mainlayout from "@/components/layout/mainLayout/Mainlayout";
 import Profilelayout from "@/components/layout/profilelayout/Profilelayout";
 import { Login } from "@/pages/Aurh/Login";
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Mainlayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -89,6 +91,10 @@ export const router = createBrowserRouter([
           { path: "help", element: <Help /> },
           { path: "settings", element: <Settings /> },
         ],
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },

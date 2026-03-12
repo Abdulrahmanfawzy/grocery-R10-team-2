@@ -77,13 +77,10 @@ data?.stock_quantity!==0 && <span className="text-gray-600 l bg-gray-200 px-2 py
               <button className="cursor-pointer" onClick={()=>{mutate({mealId:data.id,quantity:quantity})}} disabled={!data.in_stock}>Add To Cart</button>
 
             </div>
-    <div className="flex gap-1 text-[#014162] bg-gray-200 px-3 py-2 cursor-pointer rounded-md flex-1 items-center justify-center">
-              
-              <FaRegHeart className="text-3xl"/>
+            <div className="flex gap-1 text-[#014162] bg-gray-200 px-3 py-2 cursor-pointer rounded-md flex-1 items-center justify-center">
+              <FaRegHeart className="text-3xl" />
 
-               <button className="cursor-pointer">
-              Add To Favourite
-            </button> 
+              <button className="cursor-pointer">Add To Favourite</button>
             </div>
           </div>
         </div>

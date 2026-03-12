@@ -11,7 +11,6 @@ import { stripePromise } from "@/lib/stripe/stripe";
 import { storeOrder } from "@/lib/api/order";
 import { useCheckout } from "@/lib/context/checkout.context";
 
-
 function Payment() {
   const navigate = useNavigate();
   const { summary } = useCheckout();

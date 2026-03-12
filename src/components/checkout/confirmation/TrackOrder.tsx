@@ -17,7 +17,7 @@ const completedIndex = steps.reduce(
 
 function TrackOrder() {
   return (
-    <div className="border border-gray-200 rounded-md p-4 md:p-6">
+    <div className="border border-gray-200 rounded-lg p-4 md:p-6">
       <div className="flex justify-between">
         <div className="flex flex-col">
           <p className="text-sm md:text-base">Current Status</p>

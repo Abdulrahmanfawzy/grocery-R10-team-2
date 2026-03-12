@@ -31,7 +31,7 @@ function ShippingBadge({
         <div
           onClick={() => onChange(optionOne)}
           className={`flex gap-2 px-4 py-2.5 rounded-lg w-fit cursor-pointer hover:opacity-80 transition-opacity
-    ${value === optionOne ? "bg-(--primary-color) text-white" : "bg-(--silver) text-(--primary-color)"}`}>
+    ${value === optionOne ? "bg-(--primary-color) text-white" : "bg-gray-200 text-(--primary-color)"}`}>
           <IconOne strokeWidth={1} />
           <span>{delivery}</span>
         </div>
@@ -39,7 +39,7 @@ function ShippingBadge({
         <div
           onClick={() => onChange(optionTwo)}
           className={`flex gap-2 px-4 py-2.5 rounded-lg w-fit cursor-pointer hover:opacity-80 transition-opacity
-    ${value === optionTwo ? "bg-(--primary-color) text-white" : "bg-(--silver) text-(--primary-color)"}`}>
+    ${value === optionTwo ? "bg-(--primary-color) text-white" : "bg-gray-200  text-(--primary-color)"}`}>
           <IconTwo strokeWidth={1} />
           <span>{pickUp}</span>
         </div>

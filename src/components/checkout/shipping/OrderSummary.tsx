@@ -6,7 +6,7 @@ function OrderSummary() {
 
   return (
     <div className="w-full max-w-md mx-auto lg:mx-0">
-      <h2 className="text-base font-semibold text-gray-800 mb-4 p-1">
+      <h2 className="text-lg font-medium text-gray-800 mb-4 p-1">
         Order Summary
       </h2>
       <div className="border border-gray-200 rounded-xl">

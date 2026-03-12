@@ -53,10 +53,7 @@ function Shipping() {
       <div className="max-w-6xl mx-auto py-5 px-5">
         <CheckoutBreadcrumb />
         <CheckoutStepper />
-        <form
-          onSubmit={handleSubmit(onSubmit, (errors) =>
-            console.log("validation errors", errors),
-          )}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 gap-24">
             <div className="flex flex-col gap-6">
               <ContactInfo register={register} errors={errors} />
