@@ -7,19 +7,18 @@ import type { productData } from "@/lib/types/productDetailsTypes";
 import type { GalleryItem } from "react-image-gallery";
 
 type productDataProps = {
-  productInfo:productData
-}
-export default function ProductDetailsInfo({productInfo}:productDataProps) {
-     console.log(productInfo);
-const galleryImages:GalleryItem[] = productInfo.images.map((img)=>{
-  return {
-    original:img,
-    thumbnail:img,
-    // originalHeight:"200",
-    // originalWidth:"200"
-  }
-})
-
+  productInfo: productData;
+};
+export default function ProductDetailsInfo({ productInfo }: productDataProps) {
+  console.log(productInfo);
+  const galleryImages: GalleryItem[] = productInfo.images.map((img) => {
+    return {
+      original: img,
+      thumbnail: img,
+      // originalHeight:"200",
+      // originalWidth:"200"
+    };
+  });
 
   return (
     <>
@@ -52,13 +51,10 @@ const galleryImages:GalleryItem[] = productInfo.images.map((img)=>{
               <MdOutlineShoppingCart className="text-3xl" />
               <button className="cursor-pointer">Add To Cart</button>
             </div>
-    <div className="flex gap-1 text-[#014162] bg-gray-200 px-3 py-2 cursor-pointer rounded-md flex-1 items-center justify-center">
-              
-              <FaRegHeart className="text-3xl"/>
+            <div className="flex gap-1 text-[#014162] bg-gray-200 px-3 py-2 cursor-pointer rounded-md flex-1 items-center justify-center">
+              <FaRegHeart className="text-3xl" />
 
-               <button className="cursor-pointer">
-              Add To Favourite
-            </button> 
+              <button className="cursor-pointer">Add To Favourite</button>
             </div>
           </div>
         </div>
