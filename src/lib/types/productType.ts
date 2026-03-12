@@ -18,6 +18,7 @@ export interface Product {
     slug: string;
     description: string;
     image_url: string | null;
+    image?: string;
     offer_title: string | null;
     price: number;
     discount_price: number;

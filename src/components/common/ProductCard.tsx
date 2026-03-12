@@ -26,7 +26,7 @@ const ProductCard = memo(({ product }: Props) => {
     product.stock_quantity === null ||
     Number(product.stock_quantity) <= 0;
 
-  const productImage = product.image_url || "";
+  const productImage = product.image_url || product.image;
   const price = Number(product.price);
   const discountPrice = Number(product.discount_price);
   const isDiscountValid = discountPrice > 0 && discountPrice < price;
