@@ -1,4 +1,4 @@
-import DriverInfo from "@/components/checkout/confirmation/DriverInfo";
+// import DriverInfo from "@/components/checkout/confirmation/DriverInfo";
 import OrderOptions from "@/components/checkout/confirmation/OrderOptions";
 import TrackOrder from "@/components/checkout/confirmation/TrackOrder";
 import OrderSummary from "@/components/checkout/shipping/OrderSummary";
@@ -19,12 +19,12 @@ function Confirmation() {
           <TrackOrder />
         </div>
 
-        <div className="p-2 mt-8 md:mt-14 mb-5">
+        {/* <div className="p-2 mt-8 md:mt-14 mb-5">
           <h4 className="font-medium text-xl mb-4 p-1">Driver Information</h4>
           <DriverInfo />
-        </div>
+        </div> */}
 
-        <div className="flex flex-col lg:flex-row justify-center items-stretch gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row justify-center items-stretch gap-6 p-2">
           <div className="flex-1">
             <OrderSummary />
           </div>

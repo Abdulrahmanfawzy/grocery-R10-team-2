@@ -1,4 +1,3 @@
-// src/components/common/ProductCard.tsx
 import { Card } from "@/components/ui/card";
 import Image from "../../assets/Home/Rectangle19.png";
 import { Button } from "@/components/ui/button";
@@ -23,33 +22,6 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
     <Card className="relative hover:shadow-lg transition-shadow border duration-300 p-4 overflow-hidden">
       {/* line overlay */}
       <div className="absolute w-2 h-2/4 bg-white bottom-2 -right-2 rounded-full"></div>
-      {/* Card Content */}
-      {/* Badges */}
-      {/* <div
-        className={`${product.variant === "sale" ? "absolute -top-1 left-0" : "space-x-1 ml-2"}`}
-      >
-        {product.variant === "sale"
-          ? product.badges &&
-          product.badges.map((badge) => (
-            <span
-              key={badge}
-              className={` px-6 py-1 text-xs   text-white ${badge.includes("save") ? "bg-amber-500" : "bg-primary/80"} `}
-            >
-              {badge}
-            </span>
-          ))
-          : product.badges &&
-          product.badges.map((badge) => (
-            <span
-              key={badge}
-              className="bg-primary px-3 py-1 text-xs   text-white rounded-tl-full rounded-br-full"
-            >
-              {badge}
-            </span>
-          ))}
-      </div> */}
-
-      {/* Image */}
       <img
         loading="lazy"
         src={product.image_url || Image}
@@ -67,7 +39,6 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
       <div>
         <Rating rating={product.rating} />
         <span className="text-sm font-normal text-gray-300">
-          {/* By : <span className="text-primary">{product.by}</span> */}
         </span>
       </div>
 
@@ -86,11 +57,9 @@ const ProductCard = ({ product, version = "v1" }: Props) => {
             )}
           </div>
 
-          {/* <div className={`${product.variant === "sale" ? "hidden" : "block"}`}> */}
           <Button variant="default" className="px-6 cursor-pointer">
             <ShoppingCart size={20} /> Add
           </Button>
-          {/* </div> */}
         </div>
       )}
 
