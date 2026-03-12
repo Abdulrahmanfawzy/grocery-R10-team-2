@@ -1,7 +1,5 @@
 import ProductDetailsInfo from "@/components/productDetails/productDetailsInfo/ProductDetailsInfo";
 // import { useParams} from "react-router-dom";
-import type { productData } from "@/lib/types/productDetailsTypes";
-import imgProduct from "../../assets/img/ProductImage.png"
 import ProductTabs from "@/components/productDetails/ProductDetailsTabs/ProductTabs";
 import CarouselData from "@/components/common/CarouselData"
 

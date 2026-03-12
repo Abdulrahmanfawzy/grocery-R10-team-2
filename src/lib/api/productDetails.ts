@@ -21,7 +21,7 @@ export const fetchProductsbyId = async (
 export const useProductDetails = (id: string): UseQueryResult<productData> => {
   const token = useAppSelector((state) => state.login.token);
   return useQuery({
-    queryKey: ["productDetails", id ,token],
+    queryKey: ["productDetails", id, token],
     queryFn: () => fetchProductsbyId(id, token),
   });
 };
@@ -43,7 +43,7 @@ export const fetchProducts = async (
 export const useProducts = (): UseQueryResult<productData[]> => {
   const token = useAppSelector((state) => state.login.token);
   return useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", token],
     queryFn: () => fetchProducts(token),
   });
 };

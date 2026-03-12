@@ -62,7 +62,7 @@ const ProductCard = memo(({ product }: Props) => {
         <p className="text-[10px] text-orange-600 font-bold uppercase">
           {product.category?.name || "General"}
         </p>
-        <Link to={`ProductDetails/${product.id}`}>
+        <Link to={`/product-details/${product.id}`}>
           <h3 className="text-sm font-bold line-clamp-2 min-h-[40px] text-slate-800">
             {product.title}
           </h3>
@@ -98,7 +98,8 @@ const ProductCard = memo(({ product }: Props) => {
             <button
               onClick={decrease}
               disabled={qty <= 1 || Number(product.stock_quantity) === 0}
-              className="px-2 hover:text-orange-500 disabled:opacity-30 transition-colors">
+              className="px-2 hover:text-orange-500 disabled:opacity-30 transition-colors"
+            >
               <Minus size={14} />
             </button>
 
@@ -109,7 +110,8 @@ const ProductCard = memo(({ product }: Props) => {
             <button
               onClick={increase}
               disabled={Number(product.stock_quantity) === 0}
-              className="px-2 hover:text-orange-500 disabled:opacity-30 transition-colors">
+              className="px-2 hover:text-orange-500 disabled:opacity-30 transition-colors"
+            >
               <Plus size={14} />
             </button>
           </div>
@@ -118,7 +120,8 @@ const ProductCard = memo(({ product }: Props) => {
           <Button
             disabled={isOutOfStock || isPending}
             className="flex-1 gap-2 h-10 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-            onClick={handleAddToCard}>
+            onClick={handleAddToCard}
+          >
             <ShoppingCart size={16} />
             <span className="text-xs font-bold whitespace-nowrap">
               {isOutOfStock
