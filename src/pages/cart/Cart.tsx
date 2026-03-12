@@ -1,63 +1,30 @@
 import CartItem from "../../components/common/CartItem";
 import CarouselData from "../../components/common/CarouselData";
-import imgProduct from "../../assets/img/ProductImage.png";
 import { Link } from "react-router-dom";
-import type { cartItem } from "@/lib/types/cartTypes";
+// import type { cartItem } from "@/lib/types/cartTypes";
+import Loading from "@/components/common/Loading";
+import ErrorMessage from "@/components/common/ErrorMessage";
+import { useCart, useClearCart } from "@/lib/api/cart";
+import EmptyCart from "@/components/emptyCart/EmptyCart";
+import { Button } from "@/components/ui/button";
 
 const title: string = "Explore More";
 
 export default function Cart() {
+const{data,isLoading,isError,error} = useCart()
+const {mutate} = useClearCart()
+if (isLoading) {
+  return <Loading></Loading>
+}
+if (isError) {
+  return <ErrorMessage message={error.message}></ErrorMessage>
+}
+if (data?.is_empty) {
+  return <EmptyCart></EmptyCart>
+}
+console.log(data);
+// const total:number = (data?.tax) +( data?.total)
 
-  const cartProducts: cartItem[] = [
-    {
-      id: 1,
-      name: "Apple",
-      img: imgProduct,
-      price: 100,
-      quantity: 2,
-      inStock: "in Stock"
-    },
-    {
-      id: 2,
-      name: "Orange",
-      img: imgProduct,
-      price: 80,
-      quantity: 1,
-      inStock: "in Stock"
-    },
-    {
-      id: 3,
-      name: "Banana",
-      img: imgProduct,
-      price: 60,
-      quantity: 3,
-      inStock: "in Stock"
-    },
-    {
-      id: 4,
-      name: "Mango",
-      img: imgProduct,
-      price: 120,
-      quantity: 1,
-      inStock: "in Stock"
-    },
-    {
-      id: 5,
-      name: "Strawberry",
-      img: imgProduct,
-      price: 150,
-      quantity: 0,
-      inStock: "in Stock"
-    },
-    {
-      id: 6,
-      name: "Grapes",
-      img: imgProduct,
-      price: 90,
-      quantity: 4,
-      inStock: "in Stock"
-    },
-  ];
 
   return (
     <>
@@ -68,10 +35,10 @@ export default function Cart() {
         <div className="rounded-lg border max-h-125 bg-white overflow-auto py-4 px-3">
 
           <div className="grid grid-cols-1 lg:grid-cols-2">
+ 
+             {data?.items.map((item) => (<CartItem product={item} key={item.id} />
 
-            {cartProducts.map((product) => (
-              <CartItem productInfo={product} key={product.id} />
-            ))}
+))}  
 
           </div>
 
@@ -79,7 +46,6 @@ export default function Cart() {
 
         <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
 
-          {/* Total Section */}
           <div>
             <h2 className="text-lg font-medium mb-4">Total Amount</h2>
 
@@ -89,12 +55,12 @@ export default function Cart() {
 
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>1771.45</span>
+                  <span>{data?.subtotal || 0} </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span>Shipping</span>
-                  <span>40</span>
+                  <span>Tax</span>
+                  <span>{data?.tax}</span>
                 </div>
 
               </div>
@@ -103,7 +69,7 @@ export default function Cart() {
 
               <div className="flex justify-between font-medium text-gray-800">
                 <span>Total</span>
-                <span>1881.45</span>
+                <span>{data?.total}</span>
               </div>
 
               <Link
@@ -116,7 +82,7 @@ export default function Cart() {
             </div>
           </div>
 
-          {/* Delivery Section */}
+         
           <div>
 
             <h2 className="text-lg font-medium mb-4">
@@ -125,7 +91,7 @@ export default function Cart() {
 
             <div className="bg-white border rounded-lg p-6 space-y-6">
 
-              {/* Promo Code */}
+             
               <div>
 
                 <label className="text-sm text-gray-700 block mb-2">
@@ -148,7 +114,7 @@ export default function Cart() {
 
               </div>
 
-              {/* Address */}
+             
               <div>
 
                 <label className="text-sm text-gray-700 block mb-2">
@@ -176,7 +142,7 @@ export default function Cart() {
           </div>
 
         </div>
-
+<Button onClick={()=>{mutate()}}>Clear Cart</Button>
       </div>
 
       <CarouselData heading={title} />

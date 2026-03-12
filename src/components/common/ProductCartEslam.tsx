@@ -2,7 +2,11 @@ import type { productDetailsProps } from "@/lib/types/productDetailsTypes";
 import { Badge } from "@/components/ui/badge";
 import { calculateDiscount } from "@/lib/utils/calculateDiscount";
 import Rating from "./Rating";
+import { useAddToCart } from "@/lib/api/cart";
+import { useQuantity } from "@/hooks/useUpdateQuantity";
 export default function ProductCartEslam({product}:productDetailsProps) {
+    const{quantity,setQuantity} = useQuantity()
+    const {mutate} = useAddToCart()
    return (
         <div className="bg-white rounded-2xl border p-4 hover:shadow-lg transition duration-300">
             <div className="relative aspect-square bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">
@@ -34,16 +38,18 @@ export default function ProductCartEslam({product}:productDetailsProps) {
             </div>
             <div className="flex items-center gap-2 mt-4">
                   <div className="flex items-center border rounded-md gap-2 w-50 justify-between px-2 py-1">
-                    <span className="text-blue-600 font-semibold text-2xl cursor-pointer">
+                    <span className="text-blue-600 font-semibold text-2xl cursor-pointer"
+                    onClick={()=>{setQuantity(quantity-1)}}>
                         -
                     </span>
-                    <span className="text-sm">1</span>
-                    <span className="text-blue-600 font-semibold text-2xl cursor-pointer">
+                    <span className="text-sm">{quantity}</span>
+                    <span className="text-blue-600 font-semibold text-2xl cursor-pointer"
+                    onClick={()=>{setQuantity(quantity+1)}}>
                         +
                     </span>
                 </div>
-                <button className=" w-50 bg-[#0F3D53] text-white py-2 px-3 rounded-xl hover:opacity-90 transition">
-                    Add To Cart
+                <button className=" cursor-pointer w-50 bg-[#0F3D53] text-white py-2 px-3 rounded-xl hover:opacity-90 transition"
+                onClick={()=>{mutate({mealId:product.id,quantity:quantity})}} disabled={!product.in_stock}> Add To Cart
                 </button>
             
             </div>

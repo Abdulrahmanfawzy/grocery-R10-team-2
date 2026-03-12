@@ -8,18 +8,15 @@ import { FaRegHeart } from "react-icons/fa";
 import { useProductDetails } from "@/lib/api/productDetails";
 import { useParams } from "react-router-dom";
 import Rating from "@/components/common/Rating";
-import { is } from "zod/v4/locales";
 import Loading from "@/components/common/Loading";
 import ErrorMessage from "@/components/common/ErrorMessage";
-// import { string } from "zod";
-
-
-// type productDataProps = {
-//   productInfo:productData
-// }
+import { useAddToCart} from "@/lib/api/cart";
+import { useQuantity } from "@/hooks/useUpdateQuantity";
 export default function ProductDetailsInfo() {
-
+  const{quantity,setQuantity} = useQuantity()
 const {id} = useParams()
+const {mutate} = useAddToCart()
+// const {mutate} = useUpdataQuantity()
 
 const { data, isLoading, isError,error } = useProductDetails(id!)
 if (isLoading) {
@@ -32,6 +29,7 @@ if (isError) {
   
 }
 
+console.log(data);
 
 if(!data) return null
   return (
@@ -59,19 +57,25 @@ data?.stock_quantity!==0 && <span className="text-gray-600 l bg-gray-200 px-2 py
           </div>
           {<Rating rating={data.rating}></Rating> } <span className="text-gray-500 my-2 inline-block">{data.rating} / {data.rating_count} Review</span>
           <p className="text-md mt-3 mb-2">Quantity</p>
+          {data.in_stock&&
           <div className="flex items-center border rounded-md px-4 py-1 gap-6 w-fit">
-            <span className="text-blue-600 font-semibold text-lg cursor-pointer">
+            <span className="text-blue-600 font-semibold text-lg cursor-pointer"
+            onClick={()=>{setQuantity(quantity-1)}}>
+            {/* onClick={()=>{mutate({mealId:data.id,quantity:data?.stock_quantity + 1})}}> */}
               -
             </span>
-            <span className="text-sm">{data?.stock_quantity}</span>
-            <span className="text-blue-600 font-semibold text-lg cursor-pointer">
+            <span className="text-sm">{quantity}</span>
+            <span className="text-blue-600 font-semibold text-lg cursor-pointer"
+            onClick={()=>{setQuantity(quantity+1)}}>
               +
             </span>
           </div>
+          }
           <div className="flex gap-3 my-4">
             <div className="flex gap-1 bg-[#014162] text-white px-3 py-2 cursor-pointer rounded-md flex-1 items-center justify-center">
               <MdOutlineShoppingCart className="text-3xl" />
-              <button className="cursor-pointer">Add To Cart</button>
+              <button className="cursor-pointer" onClick={()=>{mutate({mealId:data.id,quantity:quantity})}} disabled={!data.in_stock}>Add To Cart</button>
+
             </div>
     <div className="flex gap-1 text-[#014162] bg-gray-200 px-3 py-2 cursor-pointer rounded-md flex-1 items-center justify-center">
               

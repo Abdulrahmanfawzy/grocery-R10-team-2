@@ -3,8 +3,11 @@ import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import SearchBar from "./SearchBar";
 import Container from "@/components/common/Container";
+import { useCart } from "@/lib/api/cart";
 
 const Navbar = () => {
+  
+
   return (
     <div className="sticky top-0 left-0 bg-white  z-50 shadow-sm py-2 md:p-0 ">
   <Container>
