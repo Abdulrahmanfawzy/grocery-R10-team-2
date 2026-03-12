@@ -1,9 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
 import type { Cart } from "../types/cartTypes";
-// import api from "./checkoutApi";
-// import type { CartItem } from "@/lib/types/checkout.types";
+import type { CartItem } from "../types/checkout.types";
+import { useAppSelector } from "@/store/hook";
+import api from "./checkoutApi"; 
+
 
 export const getCartProducts = async (token: string | null): Promise<Cart> => {
   const { data } = await axios.get(
@@ -17,14 +19,6 @@ export const getCartProducts = async (token: string | null): Promise<Cart> => {
   return data.data;
 };
 
-export const useCart = () => {
-  const token = useAppSelector((state) => state.login.token); 
-  return useQuery({
-    queryKey: ["cart", token],
-    queryFn: () => getCartProducts(token),
-  });
-};
-
 export const addToCart = async ({
   mealId,
   quantity,
@@ -36,39 +30,10 @@ export const addToCart = async ({
 }) => {
   const { data } = await axios.post(
     "https://grocery.newcinderella.online/api/cart/items",
-    {
-      meal_id: mealId,
-      quantity: quantity,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
+    { meal_id: mealId, quantity },
+    { headers: { Authorization: `Bearer ${token}` } },
   );
   return data;
-};
-
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { CartItem } from "../types/checkout.types";
-import { api } from "./BaseURLAuth";
-import { useAppSelector } from "@/store/hook";
-
-export const useAddToCart = () => {
-  const queryClient = useQueryClient();
-  const token = useAppSelector((state) => state.login.token); 
-
-  return useMutation({
-    mutationFn: (variables: { mealId: number; quantity: number }) =>
-      addToCart({ ...variables, token }),
-
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["cart"],
-      });
-      toast("Your Product Added To cart Successfully");
-    },
-  });
 };
 
 export const updateCart = async ({
@@ -82,87 +47,86 @@ export const updateCart = async ({
 }) => {
   const { data } = await axios.put(
     `https://grocery.newcinderella.online/api/cart/items/${mealId}`,
-    {
-      quantity: quantity,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
+    { quantity },
+    { headers: { Authorization: `Bearer ${token}` } },
   );
-
   return data;
-};
-
-export const useUpdataQuantity = () => {
-  const queryClient = useQueryClient();
-  const token = useAppSelector((state) => state.login.token); 
-
-  return useMutation({
-    mutationFn: (variables: { mealId: number; quantity: number }) =>
-      updateCart({ ...variables, token }),
-
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["cart"],
-      });
-      toast.success("Your Product Quantity updated Successfully");
-    },
-  });
 };
 
 export const removeCartItem = async (itemId: number, token: string | null) => {
   const { data } = await axios.delete(
     `https://grocery.newcinderella.online/api/cart/items/${itemId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
+    { headers: { Authorization: `Bearer ${token}` } },
   );
-
   return data;
-};
-
-export const useRemoveCartItem = () => {
-  const token = useAppSelector((state) => state.login.token); 
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: (itemId: number) => removeCartItem(itemId, token), 
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["cart"],
-      });
-      toast.success("Your Product Have been Removed From Cart");
-    },
-  });
 };
 
 export const clearCart = async (token: string | null) => {
   const { data } = await axios.delete(
     `https://grocery.newcinderella.online/api/cart/clear`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
+    { headers: { Authorization: `Bearer ${token}` } },
   );
-
   return data;
+};
+
+
+export const useCart = () => {
+  const token = useAppSelector((state) => state.login.token);
+  return useQuery({
+    queryKey: ["cart", token],
+    queryFn: () => getCartProducts(token),
+  });
+};
+
+export const useAddToCart = () => {
+  const queryClient = useQueryClient();
+  const token = useAppSelector((state) => state.login.token);
+
+  return useMutation({
+    mutationFn: (variables: { mealId: number; quantity: number }) =>
+      addToCart({ ...variables, token }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+      toast("Your Product Added To cart Successfully");
+    },
+  });
+};
+
+export const useUpdataQuantity = () => {
+  const queryClient = useQueryClient();
+  const token = useAppSelector((state) => state.login.token);
+
+  return useMutation({
+    mutationFn: (variables: { mealId: number; quantity: number }) =>
+      updateCart({ ...variables, token }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+      toast.success("Your Product Quantity updated Successfully");
+    },
+  });
+};
+
+export const useRemoveCartItem = () => {
+  const token = useAppSelector((state) => state.login.token);
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (itemId: number) => removeCartItem(itemId, token),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+      toast.success("Your Product Have been Removed From Cart");
+    },
+  });
 };
 
 export const useClearCart = () => {
   const queryClient = useQueryClient();
-  const token = useAppSelector((state) => state.login.token); 
+  const token = useAppSelector((state) => state.login.token);
 
   return useMutation({
-    mutationFn: () => clearCart(token), 
+    mutationFn: () => clearCart(token),
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["cart"],
-      });
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
       toast.success("Your Cart is Cleared Now");
     },
   });

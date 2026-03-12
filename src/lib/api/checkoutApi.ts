@@ -3,9 +3,25 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "https://grocery.newcinderella.online/api",
   headers: {
-    Authorization: `Bearer 393|K2UabsykX200TgCnir17PLnNxZb97lp2rt7KSQx0c32bb2f9`,
     Accept: "application/json",
   },
+});
+
+
+api.interceptors.request.use((config) => {
+  try {
+    const persisted = localStorage.getItem("persist:login");
+    if (persisted) {
+      const parsed = JSON.parse(persisted);
+      const token = parsed.token?.replace(/"/g, "");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+  } catch (e) {
+    console.error("Failed to read token from persist:login", e);
+  }
+  return config;
 });
 
 export default api;
