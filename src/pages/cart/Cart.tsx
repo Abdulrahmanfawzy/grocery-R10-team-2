@@ -19,8 +19,8 @@ if (isLoading) {
 if (isError) {
   return <ErrorMessage message={error.message}></ErrorMessage>
 }
-if (data?.is_empty) {
-  return <EmptyCart></EmptyCart>
+if (data?.is_empty || !data?.items || data?.items.length === 0) {
+  return <EmptyCart />;
 }
 console.log(data);
 // const total:number = (data?.tax) +( data?.total)
