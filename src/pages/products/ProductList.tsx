@@ -96,7 +96,7 @@ const ProductList = () => {
                                     <ProductCard
                                         key={product.id}
                                         product={product}
-                                        version="v2"
+                                    // version="v2"
                                     />
                                 ))
                             }

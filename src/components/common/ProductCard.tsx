@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Plus, Minus } from "lucide-react";
 import Rating from "./Rating";
 import { memo, useState } from "react";
-import type { Product } from "@/lib/types/typesProducts";
+// import type { Product } from "@/lib/types/typesProducts";
 import { useAddToCard } from "@/hooks/useAddToCard";
 import { Link } from "react-router-dom";
+import type { Product } from "@/lib/types/productType";
 
 type Props = {
   product: Product;
@@ -25,7 +26,7 @@ const ProductCard = memo(({ product }: Props) => {
     product.stock_quantity === null ||
     Number(product.stock_quantity) <= 0;
 
-  const productImage = product.image_url || product.image;
+  const productImage = product.image_url || "";
   const price = Number(product.price);
   const discountPrice = Number(product.discount_price);
   const isDiscountValid = discountPrice > 0 && discountPrice < price;
