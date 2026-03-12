@@ -50,6 +50,8 @@ export const addToCart = async ({mealId,quantity}:{mealId:number,quantity:number
 
 }
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import type { CartItem } from "../types/checkout.types";
+import { api } from "./BaseURLAuth";
 
 export const useAddToCart = () => {
 
@@ -157,28 +159,28 @@ export const useClearCart = () => {
 
 }
 
-// export async function getCart() {
-//   const response = await api.get("/cart");
-//   const data = response.data.data;
+export async function getCart() {
+  const response = await api.get("/cart");
+  const data = response.data.data;
 
-//   const items: CartItem[] = data.items.map((item: any) => ({
-//     id: item.id,
-//     name: item.meal.title,
-//     quantity: item.quantity,
-//     price: item.unit_price,
-//     imageUrl: item.meal.image_url,
-//     inStock: item.meal.in_stock,
-//   }));
+  const items: CartItem[] = data.items.map((item: any) => ({
+    id: item.id,
+    name: item.meal.title,
+    quantity: item.quantity,
+    price: item.unit_price,
+    imageUrl: item.meal.image_url,
+    inStock: item.meal.in_stock,
+  }));
 
-//   return {
-//     items,
-//     subtotal: data.subtotal,
-//     tax: data.tax,
-//     total: data.total,
-//   };
-// }
+  return {
+    items,
+    subtotal: data.subtotal,
+    tax: data.tax,
+    total: data.total,
+  };
+}
 
-// export async function updateCartItem(id: string, quantity: number) {
-//   const response = await api.put(`/cart/items/${id}`, { quantity });
-//   return response.data;
-// }
+export async function updateCartItem(id: string, quantity: number) {
+  const response = await api.put(`/cart/items/${id}`, { quantity });
+  return response.data;
+}
