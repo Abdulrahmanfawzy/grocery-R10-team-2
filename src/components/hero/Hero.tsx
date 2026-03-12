@@ -29,12 +29,12 @@ const Hero = () => {
           </div>
         </div>
         {/* Right Content */}
-
         <img
           className="absolute top-0 right-0"
           src={ImageRight}
           alt="Hero Image"
         />
+
       </Container>
     </div>
   );

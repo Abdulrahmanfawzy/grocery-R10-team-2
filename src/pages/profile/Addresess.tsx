@@ -1,8 +1,10 @@
-import React from 'react'
+import DeliveryAddresses from '@/components/dashboard/DeliveryAddresses/DeliveryAddresses'
 
 const Addresess = () => {
   return (
-    <div>Addresess</div>
+    <div>
+      <DeliveryAddresses />
+    </div>
   )
 }
 

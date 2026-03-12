@@ -9,9 +9,9 @@ const Navbar = () => {
   
 
   return (
-    <div className="sticky top-0 left-0 bg-white  z-50 shadow-sm py-2 md:p-0 ">
+    <div className="sticky top-0 left-0 bg-white  z-50 shadow-sm py-2  ">
   <Container>
-    <div className="flex items-center justify-between bg-white py-6 ">
+    <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 ">
       {/* {Left section} */}
       <Logo />
       {/* {Middle section} */}

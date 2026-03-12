@@ -1,4 +1,5 @@
 //route.tsx
+import { ProtectesRoute } from "@/components/Auth/ProtectedRoutes/ProtectesRoute";
 import Mainlayout from "@/components/layout/mainLayout/Mainlayout";
 import Profilelayout from "@/components/layout/profilelayout/Profilelayout";
 import { Login } from "@/pages/Aurh/Login";
@@ -25,9 +26,9 @@ import Security from "@/pages/profile/Security";
 import Settings from "@/pages/profile/Settings";
 import SmartLists from "@/pages/profile/SmartLists";
 import { createBrowserRouter } from "react-router-dom";
+import CheckoutProvider from "@/lib/context/checkoutProvider";
 
 export const router = createBrowserRouter([
-  // Home
   {
     path: "/",
     element: <Mainlayout />,
@@ -44,12 +45,14 @@ export const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
-         {
+
+      {
         path: "product-details/:id",
         element: <ProductDetails />,
       },
       {
         path: "checkout",
+        element: <CheckoutProvider />,
         children: [
           {
             index: true,
@@ -91,28 +94,27 @@ export const router = createBrowserRouter([
   },
 
   // Auth
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/password-recovery", element: <PasswordRecovery /> },
+  { path: "/password-recovery-phone", element: <PasswordRecoveryWithPhone /> },
+  { path: "/verification-code", element: <VerificationCode /> },
+  { path: "/resend-password", element: <ResendPassword /> },
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/password-recovery",
-    element: <PasswordRecovery />,
-  },
-  {
-    path: "/password-recovery-phone",
-    element: <PasswordRecoveryWithPhone />,
-  },
-  {
-    path: "/verification-code",
-    element: <VerificationCode />,
-  },
-  {
-    path: "/resend-password",
-    element: <ResendPassword />,
+    element: <ProtectesRoute />,
+    children: [
+      { path: "/Login", element: <Login /> },
+      {
+        path: "/Register",
+        element: <Register />,
+      },
+      { path: "/password-recovery", element: <PasswordRecovery /> },
+      {
+        path: "/password-recovery-phone",
+        element: <PasswordRecoveryWithPhone />,
+      },
+      { path: "/verification-code", element: <VerificationCode /> },
+      { path: "/resend-password", element: <ResendPassword /> },
+    ],
   },
 ]);

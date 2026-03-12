@@ -29,16 +29,16 @@ const images: GalleryItem[] = [
   },
 ];
 
-      const galleryRef = useRef<ImageGalleryRef>(null);
+  const galleryRef = useRef<ImageGalleryRef>(null);
   return <>
-        <ImageGallery
+    <ImageGallery
       showFullscreenButton={false}
       showPlayButton={false}
       showNav={false}
       ref={galleryRef}
       items={images}
-      
+
       onSlide={(index) => console.log("Slid to", index)}
-      />
+    />
   </>
 }

@@ -1,8 +1,9 @@
-import React from 'react'
-
+import SecuritySettings from '@/components/dashboard/SecuritySettings/SecuritySettings'
 const Security = () => {
   return (
-    <div>Security</div>
+    <>
+    <SecuritySettings />
+    </>
   )
 }
 

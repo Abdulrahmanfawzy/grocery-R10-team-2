@@ -1,8 +1,15 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CircleCheck } from "lucide-react";
+import type { ShippingFormData } from "@/lib/schemas/shippingSchema";
+import type { FieldErrors, UseFormRegister } from "react-hook-form";
 
-function ContactInfo() {
+interface Props {
+  register: UseFormRegister<ShippingFormData>;
+  errors: FieldErrors<ShippingFormData>;
+}
+
+function ContactInfo({ register, errors }: Props) {
   return (
     <div>
       <h2 className="text-base font-semibold text-gray-800 mb-4">
@@ -10,25 +17,50 @@ function ContactInfo() {
       </h2>
 
       <div className="space-y-4 border border-gray-200 rounded-xl p-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <Label htmlFor="firstName">First Name</Label>
-            <Input id="firstName" placeholder="Sarah" />
+            <Input
+              id="firstName"
+              placeholder="Sarah"
+              {...register("firstName")}
+            />
+            {errors.firstName && (
+              <p className="text-red-500 text-sm">{errors.firstName.message}</p>
+            )}
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="lastName">Last Name</Label>
-            <Input id="lastName" placeholder="Emad" />
+            <Input id="lastName" placeholder="Emad" {...register("lastName")} />
+            {errors.lastName && (
+              <p className="text-red-500 text-sm">{errors.lastName.message}</p>
+            )}
           </div>
         </div>
 
         <div className="space-y-1.5">
           <Label htmlFor="phone">Phone Number</Label>
-          <Input id="phone" placeholder="+20***********" />
+          <Input
+            id="phone"
+            placeholder="+20***********"
+            {...register("phoneNumber")}
+          />
+          {errors.phoneNumber && (
+            <p className="text-red-500 text-sm">{errors.phoneNumber.message}</p>
+          )}
         </div>
 
         <div className="space-y-1.5">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="Sarahem@gmail.com" />
+          <Input
+            id="email"
+            type="email"
+            placeholder="Sarahem@gmail.com"
+            {...register("email")}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
         </div>
         <div className="flex gap-2 items-center mt-2">
           <CircleCheck strokeWidth={1} className="text-(--gray)" />

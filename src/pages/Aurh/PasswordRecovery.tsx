@@ -11,9 +11,13 @@ import {
   type EmailSchematype,
 } from "@/lib/schemas/PasswordRecovery";
 import { PopUP } from "@/components/Auth/PopUP";
+import { useEmailRecovery } from "@/hooks/useEmailRecover";
 
 const PasswordRecovery = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { mutate, isPending } = useEmailRecovery();
+  const [email, setEmail] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -25,8 +29,12 @@ const PasswordRecovery = () => {
     resolver: zodResolver(EmailSchema),
   });
   const onSumbit: SubmitHandler<EmailSchematype> = (data) => {
-    setIsOpen(true);
-    console.log(data)
+    mutate(data, {
+      onSuccess: () => {
+        setEmail(data.email);
+        setIsOpen(true);
+      },
+    });
   };
 
   return (
@@ -74,11 +82,12 @@ const PasswordRecovery = () => {
           <Button
             className="w-80.25 h-13.5  mt-12.5 cursor-pointer"
             onClick={handleSubmit(onSumbit)}
+            disabled={isPending}
           >
             Verify
           </Button>
 
-          <PopUP isOpen={isOpen} setIsOpen={setIsOpen} />
+          <PopUP isOpen={isOpen} setIsOpen={setIsOpen} email={email} />
         </div>
       </div>
     </div>

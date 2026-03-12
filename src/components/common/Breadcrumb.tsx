@@ -25,7 +25,7 @@ const breadcrumbLinks = {
       { label: "Fresh Products", to: "/products" },
       { label: "Cart", to: "/cart" },
       { label: "Shipping", to: "/checkout/shipping" },
-      { label: "Shipping", to: "/checkout/payment" },
+      { label: "Payment", to: "/checkout/payment" },
     ],
     current: "Confirmation",
   },
