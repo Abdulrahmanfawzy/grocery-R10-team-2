@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { useGetCart } from "@/hooks/useGetCart";
 import { useAppSelector } from "@/store/hook";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const NavActions = () => {
-  const { data  } = useGetCart();
+  const { data } = useGetCart();
   const itemCount = data?.data?.items?.length ?? 0;
   const user = useAppSelector((state) => state.login.currentUser);
   return (
-    <div className="flex items-center gap-4 shrink-0">
+    <div className="flex items-center gap-5 shrink-0">
       {/* cart */}
       <Link to="cart">
         <div className="flex relative items-center gap-2 cursor-pointer">
@@ -30,8 +30,10 @@ const NavActions = () => {
       {/* Sign Up Button */}
       {user ? (
         <Link to={"/profile"}>
-          <Button variant="default" className="cursor-pointer">
-            {user.username} profile
+          <Button variant="default" className="cursor-pointer flex items-center gap-2">
+            <span className="hidden md:inline">{user.username} profile</span>
+
+            <User className="inline" size={20} />
           </Button>
         </Link>
       ) : (
