@@ -2,6 +2,9 @@ import { Trash2, Plus } from "lucide-react";
 import type { CartItem } from "@/lib/types/checkout.types";
 import { updateCartItem } from "@/lib/api/cart";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import api from "@/lib/api/checkoutApi";
+import { useCheckout } from "@/lib/context/checkout.context";
 
 interface Props {
   item: CartItem;
@@ -11,9 +14,28 @@ interface Props {
 function OrderItem({ item, onQuantityChange }: Props) {
   const [quantity, setQuantity] = useState(item.quantity);
   const [loading, setLoading] = useState(false);
+  const { removeItem } = useCheckout(); // ✅ gets removeItem from context
+
+  const handleDelete = async () => {
+    setLoading(true);
+    try {
+      await api.delete(`/cart/items/${item.id}`);
+      removeItem(String(item.id)); 
+      toast.success("Item deleted successfully");
+    } catch (error) {
+      console.error("Failed to delete item:", error);
+      toast.error("Failed to delete item");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleUpdate = async (newQuantity: number) => {
-    if (newQuantity < 1) return;
+    if (newQuantity < 1) {
+      await handleDelete();
+      return;
+    }
+
     setLoading(true);
     try {
       await updateCartItem(String(item.id), newQuantity);
@@ -21,6 +43,7 @@ function OrderItem({ item, onQuantityChange }: Props) {
       onQuantityChange?.(String(item.id), newQuantity);
     } catch (error) {
       console.error("Failed to update quantity:", error);
+      toast.error("Failed to update quantity");
     } finally {
       setLoading(false);
     }
@@ -42,9 +65,7 @@ function OrderItem({ item, onQuantityChange }: Props) {
       <div className="flex-1">
         <p className="text-sm font-medium text-gray-800 mb-2">{item.name}</p>
         <div className="flex items-center gap-6 border border-gray-200 rounded-lg w-fit px-3 py-1">
-          <button
-            onClick={() => handleUpdate(quantity - 1)}
-            disabled={loading || quantity <= 1}>
+          <button onClick={() => handleUpdate(quantity - 1)} disabled={loading}>
             <Trash2 className="w-4 h-4 text-gray-400" />
           </button>
           <span className="text-sm font-semibold">{quantity}</span>
@@ -53,6 +74,7 @@ function OrderItem({ item, onQuantityChange }: Props) {
           </button>
         </div>
       </div>
+
       <p className="text-sm font-semibold text-gray-800">
         £ {(item.price * quantity).toFixed(2)}
       </p>
