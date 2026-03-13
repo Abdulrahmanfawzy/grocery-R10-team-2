@@ -10,6 +10,18 @@ const stepFromPath = (pathname: string): CheckoutStep => {
   return "shipping";
 };
 
+const calcSummary = (items: CartItem[], tax: number, shipping: number) => {
+  const subtotal = parseFloat(
+    items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2),
+  );
+  return {
+    subtotal,
+    shipping,
+    tax,
+    total: parseFloat((subtotal + tax).toFixed(2)),
+  };
+};
+
 function CheckoutProvider() {
   const location = useLocation();
   const currentStep = stepFromPath(location.pathname);
@@ -43,25 +55,29 @@ function CheckoutProvider() {
       const updatedItems = prevItems.map((item) =>
         String(item.id) === id ? { ...item, quantity: newQuantity } : item,
       );
-      const newSubtotal = parseFloat(
-        updatedItems
-          .reduce((acc, item) => acc + item.price * item.quantity, 0)
-          .toFixed(2),
-      );
+      setSummary((prev) => calcSummary(updatedItems, prev.tax, prev.shipping));
+      return updatedItems;
+    });
+  };
 
-      setSummary((prev) => ({
-        ...prev,
-        subtotal: newSubtotal,
-        total: parseFloat((newSubtotal + prev.tax).toFixed(2)),
-      }));
-
+  const removeItem = (id: string) => {
+    setItems((prevItems) => {
+      const updatedItems = prevItems.filter((item) => String(item.id) !== id);
+      setSummary((prev) => calcSummary(updatedItems, prev.tax, prev.shipping));
       return updatedItems;
     });
   };
 
   return (
     <CheckoutContext.Provider
-      value={{ currentStep, items, summary, loading, updateItemQuantity }}>
+      value={{
+        currentStep,
+        items,
+        summary,
+        loading,
+        updateItemQuantity,
+        removeItem,
+      }}>
       <Outlet />
     </CheckoutContext.Provider>
   );

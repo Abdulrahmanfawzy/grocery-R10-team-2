@@ -15,7 +15,8 @@ interface CheckoutContextType {
   items: CartItem[];
   summary: CartSummary;
   loading: boolean;
-  updateItemQuantity: (id: string, newQuantity: number) => void; // ✅ NEW
+  updateItemQuantity: (id: string, newQuantity: number) => void;
+  removeItem: (id: string) => void; 
 }
 
 const CheckoutContext = createContext<CheckoutContextType>({
@@ -24,6 +25,7 @@ const CheckoutContext = createContext<CheckoutContextType>({
   summary: { subtotal: 0, shipping: 0, tax: 0, total: 0 },
   loading: true,
   updateItemQuantity: () => {},
+  removeItem: () => {},
 });
 
 export const useCheckout = () => useContext(CheckoutContext);
